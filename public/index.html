@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wajid ENT Clinic – Dr. Rana Humayun Babar | Kabirwala</title>
+  <meta name="description" content="Expert ENT care by Dr. Rana Humayun Babar (MBBS, RMP, MS ENT) at Wajid ENT Clinic, Kabirwala. Endoscopic Sinus & Cosmetic Nose Surgeon. Book your appointment today." />
+  <meta property="og:title" content="Wajid ENT Clinic – Dr. Rana Humayun Babar" />
+  <meta property="og:description" content="Expert ENT care in Kabirwala. Ear, Nose, Throat & Aesthetic treatments." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --primary: #1a5f8a;
+      --primary-dark: #134a6e;
+      --primary-light: #2680bb;
+      --accent: #0e9e8e;
+      --accent-dark: #0b7d70;
+      --accent-light: #12c4b0;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --background: #f0f6fb;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --foreground: #0f172a;
+      --foreground-muted: #475569;
+      --foreground-subtle: #94a3b8;
+      --border: #cbd5e1;
+      --border-light: #e2e8f0;
+      --muted: #e2e8f0;
+      --success: #16a34a;
+      --error: #dc2626;
+      --whatsapp: #25d366;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow: 0 4px 16px rgba(0,0,0,0.10);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+      --shadow-xl: 0 20px 60px rgba(0,0,0,0.20);
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-sans); background: var(--background); color: var(--foreground); line-height: 1.6; overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; border: none; outline: none; }
+    input, textarea, select { font-family: inherit; }
+    .page { display: none; animation: fadeInPage 0.4s ease; }
+    .page.active { display: block; }
+    @keyframes fadeInPage { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-light); box-shadow: var(--shadow-sm); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .logo-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-name { font-size: 15px; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.3px; }
+    .logo-sub { font-size: 10px; color: var(--foreground-muted); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+    .nav-desktop { display: flex; align-items: center; gap: 4px; }
+    .nav-link { padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--foreground-muted); transition: all var(--transition); cursor: pointer; }
+    .nav-link:hover { color: var(--primary); background: rgba(26,95,138,0.06); }
+    .nav-link.active { color: var(--primary); background: rgba(26,95,138,0.1); font-weight: 600; }
+    .nav-cta { margin-left: 8px; padding: 9px 20px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border-radius: 8px; font-size: 14px; font-weight: 600; transition: all var(--transition); cursor: pointer; box-shadow: 0 2px 8px rgba(26,95,138,0.3); }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,95,138,0.4); }
+    .hamburger { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border-light); font-size: 18px; cursor: pointer; transition: all var(--transition); }
+    .hamburger:hover { background: var(--muted); }
+    /* MOBILE NAV */
+    .mobile-nav-overlay { display: none; position: fixed; inset: 0; z-index: 200; }
+    .mobile-nav-overlay.open { display: block; }
+    .mobile-nav-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); animation: fadeIn 0.2s ease; }
+    .mobile-nav-drawer { position: absolute; top: 0; right: 0; bottom: 0; width: min(320px, 85vw); background: white; padding: 24px; display: flex; flex-direction: column; gap: 8px; animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; }
+    @keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border-light); }
+    .mobile-nav-close { width: 36px; height: 36px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; }
+    .mobile-nav-link { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 10px; font-size: 15px; font-weight: 500; color: var(--foreground-muted); transition: all var(--transition); cursor: pointer; }
+    .mobile-nav-link:hover { color: var(--primary); background: rgba(26,95,138,0.06); }
+    .mobile-nav-link.active { color: var(--primary); background: rgba(26,95,138,0.1); font-weight: 600; }
+    .mobile-nav-icon { font-size: 18px; width: 24px; text-align: center; display: flex; align-items: center; justify-content: center; }
+    .mobile-nav-cta { margin-top: 8px; padding: 14px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border-radius: 10px; font-size: 15px; font-weight: 600; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    /* FOOTER */
+    .site-footer { background: linear-gradient(135deg, #0a2d45 0%, #0f3d5c 50%, #0a3a35 100%); color: white; padding: 64px 24px 32px; margin-top: 80px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-name { font-size: 20px; font-weight: 800; background: linear-gradient(135deg, #64b5f6, #4dd0c4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+    .footer-brand-sub { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 20px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+    .footer-col-title { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .footer-link { display: block; font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 10px; transition: color var(--transition); cursor: pointer; }
+    .footer-link:hover { color: #4dd0c4; }
+    .footer-hours-item { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 8px; display: flex; justify-content: space-between; gap: 12px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .footer-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.5); }
+    .footer-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #4dd0c4; animation: pulse 2s infinite; }
+    /* UTILITIES */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 24px; }
+    .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; color: var(--foreground); letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 12px; }
+    .section-title span { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-sub { font-size: 17px; color: var(--foreground-muted); line-height: 1.7; max-width: 560px; }
+    .section-header { margin-bottom: 56px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(26,95,138,0.08); border: 1px solid rgba(26,95,138,0.15); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--primary); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; transition: all var(--transition); cursor: pointer; }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; box-shadow: 0 4px 16px rgba(26,95,138,0.35); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,95,138,0.45); }
+    .btn-accent { background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: white; box-shadow: 0 4px 16px rgba(14,158,142,0.35); }
+    .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14,158,142,0.45); }
+    .btn-ghost { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(8px); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.25); }
+    .btn-lg { padding: 15px 36px; font-size: 16px; border-radius: 12px; }
+    .card { background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); border: 1px solid var(--border-light); overflow: hidden; transition: transform var(--transition), box-shadow var(--transition); }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    /* FORMS */
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label { font-size: 14px; font-weight: 600; color: var(--foreground); }
+    .form-label .required { color: var(--error); margin-left: 2px; }
+    .form-input, .form-select, .form-textarea { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; font-family: inherit; color: var(--foreground); background: var(--surface); transition: border-color var(--transition), box-shadow var(--transition); outline: none; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,95,138,0.12); }
+    .form-input.error, .form-select.error, .form-textarea.error { border-color: var(--error); box-shadow: 0 0 0 3px rgba(220,38,38,0.1); }
+    .form-error { font-size: 12px; color: var(--error); font-weight: 500; }
+    .form-textarea { resize: vertical; min-height: 100px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    /* TOAST */
+    .toast-container { position: fixed; top: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+    .toast { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: white; border-radius: 12px; box-shadow: var(--shadow-lg); border-left: 4px solid var(--success); min-width: 300px; pointer-events: all; animation: slideInToast 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+    .toast.error { border-color: var(--error); }
+    .toast-body { flex: 1; }
+    .toast-title { font-size: 14px; font-weight: 700; color: var(--foreground); }
+    .toast-msg { font-size: 13px; color: var(--foreground-muted); margin-top: 2px; }
+    .toast-close { font-size: 16px; color: var(--foreground-subtle); cursor: pointer; padding: 2px; }
+    @keyframes slideInToast { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+    /* HERO */
+    .hero { position: relative; min-height: 92vh; display: flex; align-items: center; background: linear-gradient(135deg, #0a2d45 0%, #0f3d5c 35%, #0a3a35 70%, #063530 100%); }
+    .hero-bg-shapes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .hero-shape { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.15; }
+    .hero-shape-1 { width: 600px; height: 600px; top: -200px; right: -100px; background: var(--accent); }
+    .hero-shape-2 { width: 400px; height: 400px; bottom: -100px; left: 10%; background: var(--primary-light); }
+    .hero-shape-3 { width: 300px; height: 300px; top: 30%; left: -100px; background: var(--gold); opacity: 0.08; }
+    .hero-grid-pattern { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
+    .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; font-size: 12px; font-weight: 600; color: #4dd0c4; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+    .hero-badge-dot { width: 6px; height: 6px; background: #4dd0c4; border-radius: 50%; animation: pulse 2s infinite; }
+    .hero-title { font-size: clamp(36px, 5vw, 62px); font-weight: 900; color: white; line-height: 1.1; letter-spacing: -1px; margin-bottom: 8px; }
+    .hero-title-name { display: block; background: linear-gradient(135deg, #64b5f6, #4dd0c4, var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-credentials { font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+    .hero-specialty { font-size: 18px; font-weight: 600; color: #4dd0c4; margin-bottom: 24px; }
+    .hero-desc { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.75; margin-bottom: 40px; max-width: 480px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-stats { display: flex; gap: 32px; }
+    .hero-stat-num { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, #64b5f6, #4dd0c4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+    .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; }
+    .hero-card-wrap { position: relative; width: 100%; max-width: 400px; padding: 28px 16px 16px 28px; }
+    .hero-main-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 32px; text-align: center; }
+    .hero-avatar { width: 160px; height: 160px; border-radius: 50%; margin: 0 auto 20px; border: 4px solid rgba(255,255,255,0.2); box-shadow: 0 0 40px rgba(77,208,196,0.3); object-fit: cover; object-position: center top; }
+    .hero-doc-name { font-size: 20px; font-weight: 700; color: white; margin-bottom: 4px; }
+    .hero-doc-creds { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+    .hero-doc-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 20px; }
+    .hero-tag { padding: 4px 12px; background: rgba(77,208,196,0.15); border: 1px solid rgba(77,208,196,0.3); border-radius: 100px; font-size: 11px; font-weight: 600; color: #4dd0c4; }
+    .hero-services-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .hero-service-mini { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.8); font-weight: 500; }
+    .hero-float-badge { position: absolute; background: white; border-radius: 12px; padding: 10px 14px; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; z-index: 10; }
+    .hero-float-badge-1 { top: 0; left: 0; color: var(--success); }
+    .hero-float-badge-2 { display: none; }
+    .hero-card-location { display: flex; align-items: center; gap: 8px; padding: 11px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.13); border-radius: 10px; font-size: 12px; color: rgba(255,255,255,0.78); font-weight: 500; margin-top: 14px; text-align: left; }
+    /* INTRO */
+    .intro-section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .intro-features { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+    .intro-feature { display: flex; gap: 16px; align-items: flex-start; }
+    .intro-feature-icon { width: 44px; height: 44px; flex-shrink: 0; background: linear-gradient(135deg, rgba(26,95,138,0.1), rgba(14,158,142,0.1)); border: 1px solid rgba(26,95,138,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .intro-feature-title { font-size: 15px; font-weight: 700; color: var(--foreground); margin-bottom: 2px; }
+    .intro-feature-text { font-size: 14px; color: var(--foreground-muted); }
+    .intro-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+    .intro-img-wrap { position: relative; width: 100%; }
+    .intro-main-img { width: 100%; border-radius: 24px; box-shadow: var(--shadow-xl); object-fit: cover; height: 420px; object-position: center top; }
+    .intro-img-badge { position: absolute; bottom: 24px; left: 24px; background: white; border-radius: 14px; padding: 14px 18px; box-shadow: var(--shadow-lg); }
+    .intro-badge-num { font-size: 24px; font-weight: 800; color: var(--primary); }
+    .intro-badge-text { font-size: 12px; color: var(--foreground-muted); font-weight: 500; }
+    .intro-stats-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .intro-stat { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 20px; text-align: center; box-shadow: var(--shadow-sm); }
+    .intro-stat-num { font-size: 28px; font-weight: 800; color: var(--primary); }
+    .intro-stat-label { font-size: 13px; color: var(--foreground-muted); margin-top: 4px; }
+    /* ABOUT */
+    .about-hero { background: linear-gradient(135deg, var(--primary), var(--accent)); padding: 80px 24px; text-align: center; color: white; }
+    .about-hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 900; margin-bottom: 12px; }
+    .about-hero p { font-size: 18px; opacity: 0.85; max-width: 540px; margin: 0 auto; }
+    .about-content { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: start; }
+    .doctor-photo-wrap { position: sticky; top: 100px; }
+    .doctor-photo { width: 100%; border-radius: 24px; object-fit: cover; height: 500px; object-position: center top; box-shadow: var(--shadow-xl); }
+    .doctor-info-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 16px; padding: 24px; margin-top: 20px; box-shadow: var(--shadow-sm); }
+    .doctor-info-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border-light); }
+    .doctor-info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .doctor-info-icon { display: flex; align-items: center; margin-top: 1px; flex-shrink: 0; }
+    .doctor-info-label { font-size: 12px; color: var(--foreground-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .doctor-info-val { font-size: 14px; color: var(--foreground); font-weight: 500; }
+    .about-bio h2 { font-size: 32px; font-weight: 800; color: var(--foreground); margin-bottom: 8px; }
+    .about-bio-sub { font-size: 16px; color: var(--accent); font-weight: 600; margin-bottom: 24px; }
+    .about-bio p { font-size: 15px; color: var(--foreground-muted); line-height: 1.8; margin-bottom: 16px; }
+    .about-section-title { font-size: 18px; font-weight: 700; color: var(--foreground); margin: 32px 0 16px; display: flex; align-items: center; gap: 10px; }
+    .about-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border-light); }
+    .credentials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .credential-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 16px; border-left: 3px solid var(--primary); }
+    .credential-year { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; }
+    .credential-degree { font-size: 14px; font-weight: 700; color: var(--foreground); margin: 2px 0; }
+    .credential-inst { font-size: 12px; color: var(--foreground-muted); }
+    .expertise-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .expertise-tag { padding: 6px 14px; background: rgba(14,158,142,0.08); border: 1px solid rgba(14,158,142,0.2); border-radius: 100px; font-size: 13px; color: var(--accent); font-weight: 500; }
+    /* SERVICES */
+    .services-hero { background: linear-gradient(135deg, #0a2d45, #0f3d5c); padding: 80px 24px; text-align: center; color: white; }
+    .services-hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 900; margin-bottom: 12px; }
+    .services-hero p { font-size: 18px; opacity: 0.85; max-width: 540px; margin: 0 auto; }
+    .services-content { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+    .service-card-big { background: var(--surface); border: 1px solid var(--border-light); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); transition: transform var(--transition), box-shadow var(--transition); display: grid; grid-template-columns: 1fr 1.5fr; }
+    .service-card-big:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); }
+    .service-card-big:nth-child(even) { direction: rtl; }
+    .service-card-big:nth-child(even) > * { direction: ltr; }
+    .service-card-visual { min-height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; gap: 16px; position: relative; overflow: hidden; }
+    .service-card-visual.ear { background: linear-gradient(135deg, #1a5f8a, #2680bb); }
+    .service-card-visual.nose { background: linear-gradient(135deg, #0e9e8e, #12c4b0); }
+    .service-card-visual.throat { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+    .service-card-visual.aesthetic { background: linear-gradient(135deg, #c9a84c, #e8c96a); }
+    .service-icon-big { width: 80px; height: 80px; border-radius: 20px; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+    .service-card-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.8); letter-spacing: 2px; text-transform: uppercase; }
+    .service-card-body { padding: 40px; }
+    .service-card-name { font-size: 26px; font-weight: 800; color: var(--foreground); margin-bottom: 12px; }
+    .service-card-desc { font-size: 15px; color: var(--foreground-muted); line-height: 1.8; margin-bottom: 24px; }
+    .service-conditions { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .service-condition { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--foreground-muted); }
+    .service-condition::before { content: '✓'; width: 20px; height: 20px; flex-shrink: 0; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: 700; }
+    .services-mini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 60px; }
+    .why-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 16px; padding: 28px 24px; text-align: center; box-shadow: var(--shadow-sm); transition: all var(--transition); }
+    .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--primary); }
+    .why-card-icon { margin-bottom: 12px; display: flex; align-items: center; justify-content: center; }
+    .why-card-title { font-size: 15px; font-weight: 700; color: var(--foreground); margin-bottom: 8px; }
+    .why-card-text { font-size: 13px; color: var(--foreground-muted); line-height: 1.6; }
+    .services-stack { display: flex; flex-direction: column; gap: 28px; }
+    /* APPOINTMENT */
+    .apt-hero { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); padding: 80px 24px; text-align: center; color: white; }
+    .apt-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 900; margin-bottom: 12px; }
+    .apt-hero p { font-size: 18px; opacity: 0.85; max-width: 540px; margin: 0 auto; }
+    .apt-content { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+    .apt-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start; }
+    .apt-info { position: sticky; top: 100px; }
+    .apt-info-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 20px; padding: 28px; box-shadow: var(--shadow); margin-bottom: 20px; }
+    .apt-info-title { font-size: 18px; font-weight: 700; color: var(--foreground); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .apt-info-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 16px; }
+    .apt-info-icon { width: 36px; height: 36px; flex-shrink: 0; background: rgba(26,95,138,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .apt-info-label { font-size: 12px; color: var(--foreground-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .apt-info-val { font-size: 14px; color: var(--foreground); font-weight: 500; margin-top: 2px; }
+    .form-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 24px; padding: 40px; box-shadow: var(--shadow-lg); }
+    .form-title { font-size: 24px; font-weight: 800; color: var(--foreground); margin-bottom: 8px; }
+    .form-sub { font-size: 14px; color: var(--foreground-muted); margin-bottom: 32px; }
+    .form-fields { display: flex; flex-direction: column; gap: 20px; }
+    .form-submit { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border-radius: 12px; font-size: 16px; font-weight: 700; box-shadow: 0 4px 20px rgba(26,95,138,0.3); transition: all var(--transition); margin-top: 8px; cursor: pointer; border: none; font-family: inherit; }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,95,138,0.4); }
+    .form-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+    /* CONTACT */
+    .contact-hero { background: linear-gradient(135deg, #1a5f8a, #0e9e8e); padding: 80px 24px; text-align: center; color: white; }
+    .contact-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 900; margin-bottom: 12px; }
+    .contact-hero p { font-size: 18px; opacity: 0.85; max-width: 540px; margin: 0 auto; }
+    .contact-content { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
+    .contact-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 20px; padding: 28px; box-shadow: var(--shadow); margin-bottom: 20px; }
+    .contact-card-title { font-size: 17px; font-weight: 700; color: var(--foreground); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .contact-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; }
+    .contact-item:last-child { margin-bottom: 0; }
+    .contact-icon-wrap { width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .contact-icon-wrap.blue { background: rgba(26,95,138,0.1); }
+    .contact-icon-wrap.teal { background: rgba(14,158,142,0.1); }
+    .contact-icon-wrap.green { background: rgba(22,163,74,0.1); }
+    .contact-item-label { font-size: 12px; color: var(--foreground-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .contact-item-val { font-size: 15px; color: var(--foreground); font-weight: 500; line-height: 1.5; }
+    .contact-item-val a { color: var(--primary); transition: color var(--transition); }
+    .contact-item-val a:hover { color: var(--accent); }
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid var(--border-light); }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td { padding: 10px 0; font-size: 14px; }
+    .hours-table td:last-child { text-align: right; color: var(--foreground-muted); font-weight: 500; }
+    .map-wrap { border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-xl); border: 1px solid var(--border-light); aspect-ratio: 4/3; }
+    .map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--primary), var(--accent)); padding: 80px 24px; text-align: center; color: white; margin: 80px 0 0; }
+    .cta-section h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 900; margin-bottom: 12px; }
+    .cta-section p { font-size: 18px; opacity: 0.85; max-width: 480px; margin: 0 auto 32px; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .page-hero-divider { width: 60px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 2px; margin: 16px auto 0; }
+    /* WHATSAPP */
+    .whatsapp-btn { position: fixed; bottom: 28px; right: 28px; z-index: 500; width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #25d366, #1ab954); color: white; font-size: 26px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.5); transition: all var(--transition); text-decoration: none; cursor: pointer; }
+    .whatsapp-btn:hover { transform: scale(1.12) rotate(-5deg); box-shadow: 0 10px 32px rgba(37,211,102,0.6); }
+    .whatsapp-btn::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid rgba(37,211,102,0.3); animation: waRing 2.5s ease infinite; }
+    @keyframes waRing { 0%, 100% { transform: scale(1); opacity: 0.3; } 50% { transform: scale(1.15); opacity: 0; } }
+    .whatsapp-tooltip { position: absolute; right: 68px; top: 50%; transform: translateY(-50%); background: #1e1e1e; color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity var(--transition); }
+    .whatsapp-tooltip::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border: 5px solid transparent; border-left-color: #1e1e1e; }
+    .whatsapp-btn:hover .whatsapp-tooltip { opacity: 1; }
+    /* CHATBOT */
+    .chatbot-trigger { position: fixed; bottom: 98px; right: 28px; z-index: 500; width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(26,95,138,0.5); cursor: pointer; transition: all var(--transition); overflow: hidden; border: none; }
+    .chatbot-trigger:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(26,95,138,0.6); }
+    .chatbot-trigger img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .chatbot-unread { position: absolute; top: -2px; right: -2px; width: 18px; height: 18px; background: #ef4444; border-radius: 50%; font-size: 10px; font-weight: 700; color: white; display: flex; align-items: center; justify-content: center; border: 2px solid white; }
+    .chatbot-panel { position: fixed; bottom: 170px; right: 28px; z-index: 500; width: 360px; border-radius: 20px; background: var(--surface); box-shadow: var(--shadow-xl); border: 1px solid var(--border-light); display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: scale(0.85) translateY(20px); pointer-events: none; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); transform-origin: bottom right; }
+    .chatbot-panel.open { opacity: 1; transform: scale(1) translateY(0); pointer-events: all; }
+    .chat-header { background: linear-gradient(135deg, var(--primary), #1e6fa0); padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+    .chat-avatar { width: 42px; height: 42px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255,255,255,0.3); flex-shrink: 0; }
+    .chat-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .chat-avatar.responding { animation: softGlow 1.5s ease-in-out infinite; box-shadow: 0 0 0 3px rgba(77,208,196,0.4); }
+    @keyframes softGlow { 0%, 100% { box-shadow: 0 0 0 3px rgba(77,208,196,0.4), 0 0 12px rgba(77,208,196,0.3); } 50% { box-shadow: 0 0 0 6px rgba(77,208,196,0.2), 0 0 24px rgba(77,208,196,0.5); } }
+    .chat-header-info { flex: 1; }
+    .chat-name { font-size: 14px; font-weight: 700; color: white; }
+    .chat-status { font-size: 11px; color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 4px; }
+    .chat-status-dot { width: 6px; height: 6px; background: #4dd0c4; border-radius: 50%; }
+    .chat-close { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.15); color: white; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background var(--transition); border: none; }
+    .chat-close:hover { background: rgba(255,255,255,0.25); }
+    .chat-messages { flex: 1; height: 320px; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #f8fafc; }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .chat-bubble-wrap { display: flex; gap: 8px; align-items: flex-end; max-width: 85%; }
+    .chat-bubble-wrap.user { margin-left: auto; flex-direction: row-reverse; }
+    .chat-bubble-avatar { width: 28px; height: 28px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+    .chat-bubble-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .chat-bubble { padding: 10px 14px; border-radius: 16px; font-size: 13.5px; line-height: 1.5; white-space: pre-line; }
+    .chat-bubble.bot { background: white; color: var(--foreground); border: 1px solid var(--border-light); border-bottom-left-radius: 4px; box-shadow: var(--shadow-sm); }
+    .chat-bubble.user { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border-bottom-right-radius: 4px; }
+    .chat-bubble-time { font-size: 10px; color: var(--foreground-subtle); margin-top: 4px; }
+    .chat-bubble-wrap.user .chat-bubble-time { text-align: right; }
+    .typing-indicator { display: flex; align-items: center; gap: 4px; padding: 10px 14px; background: white; border: 1px solid var(--border-light); border-radius: 16px; border-bottom-left-radius: 4px; width: fit-content; box-shadow: var(--shadow-sm); }
+    .typing-dot { width: 7px; height: 7px; background: var(--foreground-subtle); border-radius: 50%; animation: typingBounce 1.2s ease infinite; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); background: var(--accent); } }
+    .chat-input-area { padding: 14px 16px; border-top: 1px solid var(--border-light); display: flex; gap: 8px; align-items: flex-end; background: white; }
+    .chat-input { flex: 1; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 13.5px; font-family: inherit; resize: none; outline: none; max-height: 80px; transition: border-color var(--transition); line-height: 1.4; }
+    .chat-input:focus { border-color: var(--primary); }
+    .chat-send { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--transition); flex-shrink: 0; border: none; }
+    .chat-send:hover { transform: scale(1.08); }
+    .chat-send:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    /* ANIMATIONS */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid > :first-child { grid-column: 1 / -1; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { display: none; }
+      .intro-grid { grid-template-columns: 1fr; }
+      .intro-visual { order: -1; }
+      .about-grid { grid-template-columns: 1fr; }
+      .doctor-photo-wrap { position: static; }
+      .doctor-photo { height: 360px; }
+      .apt-grid { grid-template-columns: 1fr; }
+      .apt-info { position: static; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .service-card-big { grid-template-columns: 1fr; }
+      .service-card-big:nth-child(even) { direction: ltr; }
+      .service-card-visual { min-height: 180px; }
+      .services-mini-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-desktop { display: none; }
+      .hamburger { display: flex; }
+      .section { padding: 56px 24px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 28px 20px; }
+      .credentials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .chatbot-panel { width: calc(100vw - 40px); right: 20px; }
+      .intro-stats-wrap { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .hero-stats { gap: 20px; }
+      .cta-actions { flex-direction: column; align-items: center; }
+      .services-mini-grid { grid-template-columns: 1fr; }
+      .chatbot-panel { width: calc(100vw - 32px); right: 16px; bottom: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo" onclick="navigate('home')">
+      <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      <div class="logo-text">
+        <span class="logo-name">Wajid ENT Clinic</span>
+        <span class="logo-sub">Kabirwala</span>
+      </div>
+    </div>
+    <nav class="nav-desktop" id="desktopNav">
+      <span class="nav-link active" data-page="home" onclick="navigate('home')">Home</span>
+      <span class="nav-link" data-page="about" onclick="navigate('about')">About Doctor</span>
+      <span class="nav-link" data-page="services" onclick="navigate('services')">Services</span>
+      <span class="nav-link" data-page="contact" onclick="navigate('contact')">Contact</span>
+      <span class="nav-cta" onclick="navigate('appointment')">Book Appointment</span>
+    </nav>
+    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mobile-nav-backdrop" onclick="toggleMobileNav()"></div>
+  <div class="mobile-nav-drawer">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        <div class="logo-text">
+          <span class="logo-name">Wajid ENT Clinic</span>
+          <span class="logo-sub">Kabirwala</span>
+        </div>
+      </div>
+      <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+    </div>
+    <span class="mobile-nav-link active" data-page="home" onclick="navigate('home');toggleMobileNav()">
+      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> Home
+    </span>
+    <span class="mobile-nav-link" data-page="about" onclick="navigate('about');toggleMobileNav()">
+      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> About Doctor
+    </span>
+    <span class="mobile-nav-link" data-page="services" onclick="navigate('services');toggleMobileNav()">
+      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span> Services
+    </span>
+    <span class="mobile-nav-link" data-page="contact" onclick="navigate('contact');toggleMobileNav()">
+      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span> Contact
+    </span>
+    <div class="mobile-nav-cta" onclick="navigate('appointment');toggleMobileNav()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Book Appointment
+    </div>
+  </div>
+</div>
+
+<main>
+  <!-- ===== HOME ===== -->
+  <div class="page active" id="page-home">
+    <section class="hero">
+      <div class="hero-bg-shapes">
+        <div class="hero-shape hero-shape-1"></div>
+        <div class="hero-shape hero-shape-2"></div>
+        <div class="hero-shape hero-shape-3"></div>
+        <div class="hero-grid-pattern"></div>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge"><span class="hero-badge-dot"></span>Accepting New Patients</div>
+          <h1 class="hero-title">Expert ENT Care<span class="hero-title-name">Dr. Rana Humayun Babar</span></h1>
+          <p class="hero-credentials">MBBS, RMP, MS (ENT)</p>
+          <p class="hero-specialty">Endoscopic Sinus &amp; Cosmetic Nose Surgeon</p>
+          <p class="hero-desc">Providing exceptional ear, nose, throat, and aesthetic care with advanced endoscopic techniques. Trusted by thousands of patients across Kabirwala and surrounding areas.</p>
+          <div class="hero-actions">
+            <button class="btn btn-accent btn-lg" onclick="navigate('appointment')">Book Appointment</button>
+            <button class="btn btn-ghost btn-lg" onclick="navigate('services')">Explore Services →</button>
+          </div>
+          <div class="hero-stats">
+            <div><div class="hero-stat-num">5000+</div><div class="hero-stat-label">Patients Treated</div></div>
+            <div><div class="hero-stat-num">8+</div><div class="hero-stat-label">Years Experience</div></div>
+            <div><div class="hero-stat-num">4</div><div class="hero-stat-label">Specializations</div></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card-wrap">
+            <div class="hero-float-badge hero-float-badge-1">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><div style="font-size:11px;font-weight:700;color:#0f172a;">MS (ENT) Certified</div><div style="font-size:10px;color:#64748b;">Board Qualified</div></div>
+            </div>
+            <div class="hero-main-card">
+              <img src="assets/doctor_avatar_1784895249968.png" alt="Dr. Rana Humayun Babar" class="hero-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+              <div style="display:none;width:160px;height:160px;border-radius:50%;margin:0 auto 20px;background:linear-gradient(135deg,var(--primary),var(--accent));align-items:center;justify-content:center;border:4px solid rgba(255,255,255,0.2);">
+                <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="hero-doc-name">Dr. Rana Humayun Babar</div>
+              <div class="hero-doc-creds">MBBS, RMP, MS (ENT)</div>
+              <div class="hero-doc-tags">
+                <span class="hero-tag">ENT Specialist</span>
+                <span class="hero-tag">Endoscopic Surgeon</span>
+                <span class="hero-tag">Cosmetic Nose</span>
+              </div>
+              <div class="hero-services-mini">
+                <div class="hero-service-mini"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12a6 6 0 1 1 12 0c0 2.5-1.5 4.8-3.7 5.9-.5.3-.8.9-.8 1.5 0 .8-.7 1.5-1.5 1.5S10 20 10 19v-1a1 1 0 0 0-.5-.9A5.97 5.97 0 0 1 6 12z"/><path d="M12 6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 1 1 0 0 0-1 1"/></svg>Ear Care</div>
+                <div class="hero-service-mini"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c0 0-5 8-5 12a5 5 0 0 0 10 0c0-4-5-12-5-12z"/><path d="M9 17c-1.5 0-3-1-3-2.5"/><path d="M15 17c1.5 0 3-1 3-2.5"/></svg>Nose Care</div>
+                <div class="hero-service-mini"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>Throat Care</div>
+                <div class="hero-service-mini"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="m6 3-4 6"/><path d="m18 3 4 6"/></svg>Aesthetic</div>
+              </div>
+              <div class="hero-card-location">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Wajid ENT Clinic &nbsp;·&nbsp; Jhang Road, Kabirwala
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Intro -->
+    <div class="intro-section">
+      <div class="intro-grid">
+        <div class="intro-visual">
+          <div class="intro-img-wrap">
+            <img src="assets/hero_background_1784895407707.png" alt="Wajid ENT Clinic" class="intro-main-img" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,var(--primary),var(--accent))';this.parentNode.style.borderRadius='24px';this.parentNode.style.minHeight='420px'" />
+            <div class="intro-img-badge"><div class="intro-badge-num">5000+</div><div class="intro-badge-text">Happy Patients</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="pill">Why Choose Us</div>
+          <h2 class="section-title">Better ENT Care.<br/><span>Better Life.</span></h2>
+          <p class="section-sub">At Wajid ENT Clinic, we combine advanced medical expertise with compassionate care to provide the best possible outcomes for every patient.</p>
+          <div class="intro-features">
+            <div class="intro-feature">
+              <div class="intro-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+              <div><div class="intro-feature-title">Expert Qualifications</div><div class="intro-feature-text">MS (ENT) qualified specialist with comprehensive training in modern ENT procedures and techniques.</div></div>
+            </div>
+            <div class="intro-feature">
+              <div class="intro-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14H4a1 1 0 0 1 0-2h5"/><path d="M12 4v10"/><path d="M10 2h4v4h-4z"/></svg></div>
+              <div><div class="intro-feature-title">Advanced Equipment</div><div class="intro-feature-text">State-of-the-art endoscopic equipment for precise diagnostics and minimally invasive treatments.</div></div>
+            </div>
+            <div class="intro-feature">
+              <div class="intro-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+              <div><div class="intro-feature-title">Patient-Centered Care</div><div class="intro-feature-text">A warm, welcoming environment where every patient receives personalized attention and care.</div></div>
+            </div>
+            <div class="intro-feature">
+              <div class="intro-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div><div class="intro-feature-title">Flexible Appointments</div><div class="intro-feature-text">Easy online booking with flexible hours including evening appointments to suit your schedule.</div></div>
+            </div>
+          </div>
+          <div class="intro-stats-wrap">
+            <div class="intro-stat"><div class="intro-stat-num">8+</div><div class="intro-stat-label">Years Experience</div></div>
+            <div class="intro-stat"><div class="intro-stat-num">4</div><div class="intro-stat-label">Specialties</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="cta-section">
+      <h2>Ready to Feel Better?</h2>
+      <p>Book your consultation with Dr. Rana Humayun Babar today and take the first step toward better health.</p>
+      <div class="cta-actions">
+        <button class="btn btn-ghost btn-lg" onclick="navigate('appointment')">Book Appointment</button>
+        <a href="https://wa.me/923098742674" target="_blank" class="btn btn-lg" style="background:rgba(37,211,102,0.2);color:white;border:1px solid rgba(37,211,102,0.5);">WhatsApp Us</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <div class="page" id="page-about">
+    <div class="about-hero">
+      <div class="pill" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:white;">About</div>
+      <h1>Meet Your Doctor</h1>
+      <p>Dedicated to excellence in ENT care and patient wellbeing</p>
+      <div class="page-hero-divider"></div>
+    </div>
+    <div class="about-content">
+      <div class="about-grid">
+        <div class="doctor-photo-wrap">
+          <img src="assets/doctor_avatar_1784895249968.png" alt="Dr. Rana Humayun Babar" class="doctor-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          <div style="display:none;width:100%;height:500px;border-radius:24px;background:linear-gradient(135deg,var(--primary),var(--accent));align-items:center;justify-content:center;box-shadow:var(--shadow-xl);">
+            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="doctor-info-card">
+            <div class="doctor-info-row">
+              <span class="doctor-info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+              <div><div class="doctor-info-label">Qualification</div><div class="doctor-info-val">MBBS, RMP, MS (ENT)</div></div>
+            </div>
+            <div class="doctor-info-row">
+              <span class="doctor-info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/><path d="M2 22h20"/><path d="M12 6v4"/><path d="M10 8h4"/></svg></span>
+              <div><div class="doctor-info-label">Specialty</div><div class="doctor-info-val">Otorhinolaryngology (ENT)</div></div>
+            </div>
+            <div class="doctor-info-row">
+              <span class="doctor-info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></span>
+              <div><div class="doctor-info-label">Surgical Expertise</div><div class="doctor-info-val">Endoscopic Sinus &amp; Cosmetic Nose Surgery</div></div>
+            </div>
+            <div class="doctor-info-row">
+              <span class="doctor-info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div><div class="doctor-info-label">Clinic</div><div class="doctor-info-val">Wajid ENT Clinic, Kabirwala</div></div>
+            </div>
+            <div class="doctor-info-row">
+              <span class="doctor-info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg></span>
+              <div><div class="doctor-info-label">Contact</div><div class="doctor-info-val"><a href="tel:+923098742674" style="color:var(--primary);">0309-8742674</a></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-bio">
+          <div class="pill">Biography</div>
+          <h2>Dr. Rana Humayun Babar</h2>
+          <div class="about-bio-sub">Endoscopic Sinus &amp; Cosmetic Nose Surgeon</div>
+          <p>Dr. Rana Humayun Babar is a highly qualified ENT specialist based in Kabirwala. With a strong foundation in medicine and advanced surgical training, he has dedicated his career to providing exceptional ENT care to patients across the region.</p>
+          <p>As an Otorhinolaryngologist, Dr. Humayun Babar specializes in endoscopic sinus surgery and cosmetic nose procedures, combining precision with an artistic eye to deliver outstanding results.</p>
+          <p>Dr. Humayun Babar is deeply committed to continuous medical education and stays current with the latest advances in ENT medicine and surgery. He believes in treating not just the condition but the whole person, taking time to understand each patient's unique concerns and goals.</p>
+          <p>At Wajid ENT Clinic, he has created a warm, welcoming environment where patients from Kabirwala, Jhang, and surrounding areas receive world-class ENT care close to home.</p>
+          <div class="about-section-title">Education &amp; Credentials</div>
+          <div class="credentials-grid">
+            <div class="credential-card"><div class="credential-year">Medicine</div><div class="credential-degree">MBBS</div><div class="credential-inst">Bachelor of Medicine &amp; Surgery</div></div>
+            <div class="credential-card"><div class="credential-year">Licensing</div><div class="credential-degree">RMP</div><div class="credential-inst">Registered Medical Practitioner</div></div>
+            <div class="credential-card"><div class="credential-year">Specialization</div><div class="credential-degree">MS (ENT)</div><div class="credential-inst">Master of Surgery — Otorhinolaryngology</div></div>
+            <div class="credential-card"><div class="credential-year">Fellowship</div><div class="credential-degree">Endoscopy</div><div class="credential-inst">Advanced Endoscopic Sinus Surgery</div></div>
+          </div>
+          <div class="about-section-title">Areas of Expertise</div>
+          <div class="expertise-list">
+            <span class="expertise-tag">Endoscopic Sinus Surgery</span>
+            <span class="expertise-tag">Cosmetic Rhinoplasty</span>
+            <span class="expertise-tag">Septoplasty</span>
+            <span class="expertise-tag">Tonsil &amp; Adenoid Surgery</span>
+            <span class="expertise-tag">Ear Microsurgery</span>
+            <span class="expertise-tag">Voice Disorders</span>
+            <span class="expertise-tag">Pediatric ENT</span>
+            <span class="expertise-tag">Nasal Allergy</span>
+            <span class="expertise-tag">Hearing Assessment</span>
+            <span class="expertise-tag">Snoring Treatment</span>
+          </div>
+          <div style="margin-top:40px;"><button class="btn btn-primary btn-lg" onclick="navigate('appointment')">Book Consultation</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SERVICES ===== -->
+  <div class="page" id="page-services">
+    <div class="services-hero">
+      <div class="pill" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.9);">Our Services</div>
+      <h1>Comprehensive ENT Care</h1>
+      <p>Advanced diagnostic and treatment services for all ear, nose, throat, and aesthetic conditions</p>
+      <div class="page-hero-divider"></div>
+    </div>
+    <div class="services-content">
+      <div class="services-stack">
+        <div class="service-card-big">
+          <div class="service-card-visual ear">
+            <div class="service-icon-big"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12a6 6 0 1 1 12 0c0 2.5-1.5 4.8-3.7 5.9-.5.3-.8.9-.8 1.5 0 .8-.7 1.5-1.5 1.5S10 20 10 19v-1a1 1 0 0 0-.5-.9A5.97 5.97 0 0 1 6 12z"/><path d="M12 6a2 2 0 0 1 2 2 2 2 0 0 1-2 2 1 1 0 0 0-1 1"/></svg></div>
+            <div class="service-card-label">Ear Care</div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-name">Ear Care &amp; Audiology</div>
+            <p class="service-card-desc">Comprehensive diagnosis and treatment of all ear conditions using advanced audiological assessments and microsurgical techniques.</p>
+            <div class="service-conditions">
+              <div class="service-condition">Hearing loss assessment &amp; treatment</div>
+              <div class="service-condition">Ear infections (Otitis Media)</div>
+              <div class="service-condition">Tinnitus (ringing in ears)</div>
+              <div class="service-condition">Earwax (cerumen) removal</div>
+              <div class="service-condition">Eardrum perforations &amp; repair</div>
+              <div class="service-condition">Vertigo &amp; balance disorders</div>
+            </div>
+            <button class="btn btn-primary" onclick="navigate('appointment')">Book Consultation →</button>
+          </div>
+        </div>
+        <div class="service-card-big">
+          <div class="service-card-visual nose">
+            <div class="service-icon-big"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c0 0-5 8-5 12a5 5 0 0 0 10 0c0-4-5-12-5-12z"/><path d="M9 17c-1.5 0-3-1-3-2.5"/><path d="M15 17c1.5 0 3-1 3-2.5"/></svg></div>
+            <div class="service-card-label">Nose Care</div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-name">Nose &amp; Sinus Care</div>
+            <p class="service-card-desc">Expert management of nasal and sinus conditions using state-of-the-art endoscopic technology. Minimally invasive procedures with faster recovery times.</p>
+            <div class="service-conditions">
+              <div class="service-condition">Functional Endoscopic Sinus Surgery (FESS)</div>
+              <div class="service-condition">Nasal polyps removal</div>
+              <div class="service-condition">Septoplasty (deviated septum)</div>
+              <div class="service-condition">Allergic rhinitis treatment</div>
+              <div class="service-condition">Sinusitis management</div>
+              <div class="service-condition">Nasal obstruction correction</div>
+            </div>
+            <button class="btn btn-accent" onclick="navigate('appointment')">Book Consultation →</button>
+          </div>
+        </div>
+        <div class="service-card-big">
+          <div class="service-card-visual throat">
+            <div class="service-icon-big"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg></div>
+            <div class="service-card-label">Throat Care</div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-name">Throat &amp; Voice Care</div>
+            <p class="service-card-desc">Comprehensive evaluation and treatment of throat conditions including voice disorders, swallowing difficulties, and tonsil problems.</p>
+            <div class="service-conditions">
+              <div class="service-condition">Tonsillectomy &amp; adenoidectomy</div>
+              <div class="service-condition">Voice disorders &amp; hoarseness</div>
+              <div class="service-condition">Swallowing difficulties</div>
+              <div class="service-condition">Throat infections</div>
+              <div class="service-condition">Snoring &amp; sleep apnea</div>
+              <div class="service-condition">Laryngoscopy &amp; evaluation</div>
+            </div>
+            <button class="btn" style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:white;box-shadow:0 4px 16px rgba(124,58,237,0.35);" onclick="navigate('appointment')">Book Consultation →</button>
+          </div>
+        </div>
+        <div class="service-card-big">
+          <div class="service-card-visual aesthetic">
+            <div class="service-icon-big"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="m6 3-4 6"/><path d="m18 3 4 6"/></svg></div>
+            <div class="service-card-label">Aesthetic Care</div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-name">Aesthetic Nose Surgery</div>
+            <p class="service-card-desc">Expert cosmetic rhinoplasty and nose reshaping procedures that balance functional improvement with aesthetic enhancement.</p>
+            <div class="service-conditions">
+              <div class="service-condition">Cosmetic rhinoplasty (nose job)</div>
+              <div class="service-condition">Nose tip refinement</div>
+              <div class="service-condition">Nose bridge correction</div>
+              <div class="service-condition">Functional-aesthetic combination surgery</div>
+              <div class="service-condition">Revision rhinoplasty</div>
+              <div class="service-condition">Non-surgical nose reshaping</div>
+            </div>
+            <button class="btn" style="background:linear-gradient(135deg,#c9a84c,#e8c96a);color:#0f172a;box-shadow:0 4px 16px rgba(201,168,76,0.35);" onclick="navigate('appointment')">Book Consultation →</button>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:72px;">
+        <div class="section-header center">
+          <div class="pill">Our Promise</div>
+          <h2 class="section-title">Why Patients Choose <span>Wajid ENT Clinic</span></h2>
+        </div>
+        <div class="services-mini-grid">
+          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="why-card-title">Expert ENT Care</div><div class="why-card-text">MS (ENT) qualified surgeon with advanced training in endoscopic procedures and cosmetic surgery.</div></div>
+          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="why-card-title">Experienced Team</div><div class="why-card-text">A dedicated and compassionate medical team committed to your health and recovery.</div></div>
+          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="why-card-title">Patient Comfort</div><div class="why-card-text">A warm, patient-friendly environment designed to make your visit as comfortable as possible.</div></div>
+          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div><div class="why-card-title">Modern Facilities</div><div class="why-card-text">State-of-the-art endoscopic and audiological equipment for precise diagnosis and treatment.</div></div>
+        </div>
+      </div>
+    </div>
+    <section class="cta-section" style="margin-top:0;">
+      <h2>Need ENT Care?</h2>
+      <p>Schedule your appointment with Dr. Rana Humayun Babar and get expert care today.</p>
+      <div class="cta-actions"><button class="btn btn-ghost btn-lg" onclick="navigate('appointment')">Book Appointment</button></div>
+    </section>
+  </div>
+
+  <!-- ===== APPOINTMENT ===== -->
+  <div class="page" id="page-appointment">
+    <div class="apt-hero">
+      <div class="pill" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:white;">Appointments</div>
+      <h1>Book an Appointment</h1>
+      <p>Fill in your details and we'll confirm your appointment as soon as possible</p>
+      <div class="page-hero-divider"></div>
+    </div>
+    <div class="apt-content">
+      <div class="apt-grid">
+        <div class="apt-info">
+          <div class="apt-info-card">
+            <div class="apt-info-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/><path d="M2 22h20"/><path d="M12 6v4"/><path d="M10 8h4"/></svg>
+              Clinic Information
+            </div>
+            <div class="apt-info-item">
+              <div class="apt-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><div class="apt-info-label">Address</div><div class="apt-info-val">Jhang Road, opposite Al Shifa Orthopedic Hospital, Kabirwala</div></div>
+            </div>
+            <div class="apt-info-item">
+              <div class="apt-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg></div>
+              <div><div class="apt-info-label">Phone / WhatsApp</div><div class="apt-info-val"><a href="tel:+923098742674" style="color:var(--primary);">0309-8742674</a></div></div>
+            </div>
+            <div class="apt-info-item">
+              <div class="apt-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div><div class="apt-info-label">Clinic Hours</div><div class="apt-info-val">Mon–Sat: 10:00 AM – 9:00 PM</div></div>
+            </div>
+          </div>
+          <div class="apt-info-card">
+            <div class="apt-info-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Before Your Visit
+            </div>
+            <div style="font-size:13px;color:var(--foreground-muted);line-height:1.8;">
+              <p style="margin-bottom:8px;">• Bring any previous medical reports</p>
+              <p style="margin-bottom:8px;">• List of current medications</p>
+              <p style="margin-bottom:8px;">• Previous ENT assessments if any</p>
+              <p style="margin-bottom:8px;">• Arrive 10 minutes early</p>
+              <p>• Bring a valid ID for registration</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="form-title">Request an Appointment</div>
+          <div class="form-sub">Fill in your details below and our team will confirm your booking shortly.</div>
+          <form class="form-fields" id="appointmentForm" onsubmit="handleAppointmentSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="apt-name">Full Name <span class="required">*</span></label>
+                <input type="text" id="apt-name" class="form-input" placeholder="e.g. Ahmed Ali" autocomplete="name" />
+                <span class="form-error" id="err-name"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="apt-phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="apt-phone" class="form-input" placeholder="e.g. 0309-8742674" autocomplete="tel" />
+                <span class="form-error" id="err-phone"></span>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="apt-date">Preferred Date <span class="required">*</span></label>
+                <input type="date" id="apt-date" class="form-input" />
+                <span class="form-error" id="err-date"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="apt-time">Preferred Time <span class="required">*</span></label>
+                <select id="apt-time" class="form-select">
+                  <option value="">Select a time slot</option>
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="11:00 AM">11:00 AM</option>
+                  <option value="12:00 PM">12:00 PM</option>
+                  <option value="2:00 PM">2:00 PM</option>
+                  <option value="3:00 PM">3:00 PM</option>
+                  <option value="4:00 PM">4:00 PM</option>
+                  <option value="5:00 PM">5:00 PM</option>
+                  <option value="6:00 PM">6:00 PM</option>
+                  <option value="7:00 PM">7:00 PM</option>
+                  <option value="8:00 PM">8:00 PM</option>
+                </select>
+                <span class="form-error" id="err-time"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="apt-reason">Reason for Visit <span class="required">*</span></label>
+              <textarea id="apt-reason" class="form-textarea" placeholder="Briefly describe your symptoms or reason for the visit..." maxlength="500"></textarea>
+              <span class="form-error" id="err-reason"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="apt-email">Email Address <span style="color:var(--foreground-muted);font-weight:400;">(Optional — doctor will reply by email if provided)</span></label>
+              <input type="email" id="apt-email" class="form-input" placeholder="your@email.com" autocomplete="email" />
+              <span style="font-size:12px;color:var(--foreground-subtle);">If no email, doctor will contact you by phone to confirm the appointment.</span>
+            </div>
+            <button type="submit" class="form-submit" id="apt-submit-btn">Request Appointment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <div class="page" id="page-contact">
+    <div class="contact-hero">
+      <div class="pill" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:white;">Contact Us</div>
+      <h1>Get In Touch</h1>
+      <p>We're here to help. Reach out anytime during clinic hours</p>
+      <div class="page-hero-divider"></div>
+    </div>
+    <div class="contact-content">
+      <div class="contact-grid">
+        <div class="contact-info-col">
+          <div class="contact-card">
+            <div class="contact-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Find Us
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-wrap blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><div class="contact-item-label">Address</div><div class="contact-item-val">Jhang Road, opposite Al Shifa<br/>Orthopedic Hospital, Kabirwala</div></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-wrap teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg></div>
+              <div><div class="contact-item-label">Phone</div><div class="contact-item-val"><a href="tel:+923098742674">0309-8742674</a></div></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-wrap green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+              <div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val"><a href="https://wa.me/923098742674" target="_blank">Chat on WhatsApp →</a></div></div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Clinic Hours
+            </div>
+            <table class="hours-table">
+              <tr><td><strong>Monday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
+              <tr><td><strong>Tuesday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
+              <tr><td><strong>Wednesday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
+              <tr><td><strong>Thursday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
+              <tr><td><strong>Friday</strong></td><td>4:00 PM – 9:00 PM</td></tr>
+              <tr><td><strong>Saturday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
+              <tr><td><strong style="color:var(--error);">Sunday</strong></td><td style="color:var(--error);">Closed</td></tr>
+            </table>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="navigate('appointment')">Book Appointment</button>
+            <a href="https://wa.me/923098742674" target="_blank" class="btn" style="background:#25d366;color:white;box-shadow:0 4px 16px rgba(37,211,102,0.35);">WhatsApp</a>
+          </div>
+        </div>
+        <div>
+          <div class="map-wrap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3415.0!2d72.65!3d30.40!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b5!2sKabirwala!5e0!3m2!1sen!2s!4v1" title="Wajid ENT Clinic Location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen=""></iframe>
+          </div>
+          <div style="margin-top:16px;padding:16px 20px;background:var(--surface);border:1px solid var(--border-light);border-radius:12px;font-size:13px;color:var(--foreground-muted);">
+            <strong style="color:var(--foreground);">Wajid ENT Clinic</strong> — Jhang Road, opposite Al Shifa Orthopedic Hospital, Kabirwala, Punjab, Pakistan.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Wajid ENT Clinic</div>
+        <div class="footer-brand-sub">ENT • Aesthetic • Care</div>
+        <p class="footer-tagline">Expert ENT care by Dr. Rana Humayun Babar (MBBS, RMP, MS ENT). Providing advanced endoscopic sinus surgery and cosmetic nose care in Kabirwala.</p>
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Jhang Road, opposite Al Shifa Orthopedic Hospital, Kabirwala</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
+          <span>0309-8742674</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <span class="footer-link" onclick="navigate('home')">Home</span>
+        <span class="footer-link" onclick="navigate('about')">About Doctor</span>
+        <span class="footer-link" onclick="navigate('services')">Services</span>
+        <span class="footer-link" onclick="navigate('appointment')">Book Appointment</span>
+        <span class="footer-link" onclick="navigate('contact')">Contact Us</span>
+      </div>
+      <div>
+        <div class="footer-col-title">Clinic Hours</div>
+        <div class="footer-hours-item"><span>Mon – Thu</span><span>10 AM – 9 PM</span></div>
+        <div class="footer-hours-item"><span>Friday</span><span>4 PM – 9 PM</span></div>
+        <div class="footer-hours-item"><span>Saturday</span><span>10 AM – 9 PM</span></div>
+        <div class="footer-hours-item"><span>Sunday</span><span style="color:#ef4444;">Closed</span></div>
+        <div style="margin-top:16px;padding:12px 14px;background:rgba(77,208,196,0.1);border:1px solid rgba(77,208,196,0.2);border-radius:10px;font-size:12px;color:rgba(255,255,255,0.8);">
+          <strong style="color:#4dd0c4;">Emergency?</strong><br/>Call us at 0309-8742674
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Wajid ENT Clinic. All rights reserved. Better ENT Care. Better Life.</div>
+      <div class="footer-badge"><div class="footer-badge-dot"></div><span>Open Today Until 9:00 PM</span></div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/923098742674" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <div class="whatsapp-tooltip">Chat on WhatsApp</div>
+</a>
+
+<!-- CHATBOT TRIGGER -->
+<button class="chatbot-trigger" id="chatbotTrigger" onclick="toggleChatbot()" aria-label="Open chatbot">
+  <img src="assets/doctor_avatar_1784895249968.png" alt="Dr. Chat" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+  <span style="display:none;font-size:26px;">💬</span>
+  <span class="chatbot-unread" id="chatUnread">1</span>
+</button>
+
+<!-- CHATBOT PANEL -->
+<div class="chatbot-panel" id="chatbotPanel">
+  <div class="chat-header">
+    <div class="chat-avatar" id="chatAvatarEl">
+      <img src="assets/doctor_avatar_1784895249968.png" alt="Dr. Bot" onerror="this.style.display='none'" />
+    </div>
+    <div class="chat-header-info">
+      <div class="chat-name">Dr. Rana Humayun Babar</div>
+      <div class="chat-status"><div class="chat-status-dot"></div><span id="chatStatusText">Online · ENT Specialist</span></div>
+    </div>
+    <button class="chat-close" onclick="toggleChatbot()">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-bubble-wrap">
+      <div class="chat-bubble-avatar"><img src="assets/doctor_avatar_1784895249968.png" alt="Dr." /></div>
+      <div>
+        <div class="chat-bubble bot">Assalam-u-Alaikum! Welcome to <strong>Wajid ENT Clinic</strong>.<br/><br/>I'm here to help with information about our services, appointments, and timings. How can I assist you today?</div>
+        <div class="chat-bubble-time">Just now</div>
+      </div>
+    </div>
+  </div>
+  <div class="chat-input-area">
+    <textarea class="chat-input" id="chatInput" placeholder="Type your message..." rows="1" onkeydown="handleChatKey(event)" oninput="autoResize(this)"></textarea>
+    <button class="chat-send" id="chatSendBtn" onclick="sendChatMessage()" aria-label="Send">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+// ===== CONFIG =====
+const CONFIG = {
+  PHONE_NUMBER: '+923098742674',
+  WHATSAPP_URL: 'https://wa.me/923098742674',
+  DOCTOR_NAME: 'Dr. Rana Humayun Babar',
+  CLINIC_NAME: 'Wajid ENT Clinic',
+  CLINIC_ADDRESS: 'Jhang Road, opposite Al Shifa Orthopedic Hospital, Kabirwala',
+};
+
+// ===== API HELPERS =====
+async function postAppointment(data) {
+  const res = await fetch('/appointment', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+  if (!res.ok) throw new Error('Server error: ' + res.status);
+  return res.json();
+}
+async function apiSendChat(message) {
+  const res = await fetch('/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message }) });
+  if (!res.ok) throw new Error('Server error: ' + res.status);
+  return res.json();
+}
+
+// ===== ROUTING =====
+const pages = ['home', 'about', 'services', 'appointment', 'contact'];
+function navigate(pageName) {
+  if (!pages.includes(pageName)) return;
+  pages.forEach(p => { const el = document.getElementById('page-' + p); if (el) el.classList.remove('active'); });
+  const target = document.getElementById('page-' + pageName);
+  if (target) { target.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  updateNavLinks(pageName);
+  history.pushState({ page: pageName }, '', '#' + pageName);
+}
+function updateNavLinks(active) {
+  document.querySelectorAll('.nav-link[data-page]').forEach(el => el.classList.toggle('active', el.dataset.page === active));
+  document.querySelectorAll('.mobile-nav-link[data-page]').forEach(el => el.classList.toggle('active', el.dataset.page === active));
+}
+window.addEventListener('popstate', e => { if (e.state && e.state.page) navigate(e.state.page); else navigate('home'); });
+(function initRoute() {
+  const hash = window.location.hash.replace('#', '');
+  if (pages.includes(hash)) navigate(hash);
+  else history.replaceState({ page: 'home' }, '', '#home');
+})();
+
+// ===== MOBILE NAV =====
+function toggleMobileNav() {
+  const el = document.getElementById('mobileNavOverlay');
+  el.classList.toggle('open');
+  document.body.style.overflow = el.classList.contains('open') ? 'hidden' : '';
+}
+
+// ===== TOAST =====
+function showToast(type, title, message) {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast' + (type === 'error' ? ' error' : '');
+  toast.innerHTML = `<span style="font-size:18px">${type === 'error' ? '✕' : '✓'}</span><div class="toast-body"><div class="toast-title">${title}</div>${message ? `<div class="toast-msg">${message}</div>` : ''}</div><span class="toast-close" onclick="this.parentElement.remove()">✕</span>`;
+  container.appendChild(toast);
+  setTimeout(() => { if (toast.parentNode) toast.remove(); }, 5000);
+}
+
+// ===== APPOINTMENT FORM =====
+function validateAppointment() {
+  const fields = {
+    name: { el: document.getElementById('apt-name'), err: document.getElementById('err-name'), label: 'Full name' },
+    phone: { el: document.getElementById('apt-phone'), err: document.getElementById('err-phone'), label: 'Phone number' },
+    date: { el: document.getElementById('apt-date'), err: document.getElementById('err-date'), label: 'Preferred date' },
+    time: { el: document.getElementById('apt-time'), err: document.getElementById('err-time'), label: 'Preferred time' },
+    reason: { el: document.getElementById('apt-reason'), err: document.getElementById('err-reason'), label: 'Reason for visit' },
+  };
+  let valid = true;
+  Object.entries(fields).forEach(([key, f]) => {
+    const val = f.el.value.trim();
+    f.el.classList.remove('error'); f.err.textContent = '';
+    if (!val) { f.el.classList.add('error'); f.err.textContent = f.label + ' is required.'; valid = false; }
+  });
+  const phone = fields.phone.el.value.trim();
+  if (phone && !/^[0-9\+\-\s\(\)]{7,15}$/.test(phone)) { fields.phone.el.classList.add('error'); fields.phone.err.textContent = 'Enter a valid phone number.'; valid = false; }
+  const dateVal = fields.date.el.value;
+  if (dateVal) { const sel = new Date(dateVal); const tod = new Date(); tod.setHours(0,0,0,0); if (sel < tod) { fields.date.el.classList.add('error'); fields.date.err.textContent = 'Please select a future date.'; valid = false; } }
+  const reason = fields.reason.el.value.trim();
+  if (reason && reason.length < 10) { fields.reason.el.classList.add('error'); fields.reason.err.textContent = 'Please provide at least 10 characters.'; valid = false; }
+  return valid;
+}
+async function handleAppointmentSubmit(e) {
+  e.preventDefault();
+  if (!validateAppointment()) return;
+  const btn = document.getElementById('apt-submit-btn');
+  btn.disabled = true; btn.textContent = 'Submitting...';
+  const payload = {
+    name: document.getElementById('apt-name').value.trim(),
+    phone: document.getElementById('apt-phone').value.trim(),
+    preferred_date: document.getElementById('apt-date').value,
+    preferred_time: document.getElementById('apt-time').value,
+    reason: document.getElementById('apt-reason').value.trim(),
+    email: document.getElementById('apt-email').value.trim() || null,
+  };
+  try {
+    const data = await postAppointment(payload);
+    showToast('success', 'Appointment Requested!', data.message || 'We\'ll confirm your booking shortly.');
+    document.getElementById('appointmentForm').reset();
+  } catch (err) {
+    showToast('error', 'Could Not Submit', 'Please call us at 0309-8742674 or message on WhatsApp.');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Request Appointment';
+  }
+}
+(function setMinDate() {
+  const d = document.getElementById('apt-date');
+  if (d) d.min = new Date().toISOString().split('T')[0];
+})();
+
+// ===== CHATBOT =====
+let chatbotOpen = false, isResponding = false;
+const chatMessages = document.getElementById('chatMessages');
+const chatAvatarEl = document.getElementById('chatAvatarEl');
+const chatStatusText = document.getElementById('chatStatusText');
+function toggleChatbot() {
+  chatbotOpen = !chatbotOpen;
+  document.getElementById('chatbotPanel').classList.toggle('open', chatbotOpen);
+  const u = document.getElementById('chatUnread');
+  if (chatbotOpen && u) u.style.display = 'none';
+  if (chatbotOpen) setTimeout(() => document.getElementById('chatInput').focus(), 300);
+}
+function autoResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 80) + 'px'; }
+function handleChatKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); } }
+function getTime() { return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }); }
+function appendMessage(role, text) {
+  const isUser = role === 'user';
+  const wrap = document.createElement('div');
+  wrap.className = 'chat-bubble-wrap' + (isUser ? ' user' : '');
+  if (!isUser) {
+    wrap.innerHTML = `<div class="chat-bubble-avatar"><img src="assets/doctor_avatar_1784895249968.png" alt="Dr." /></div><div><div class="chat-bubble bot">${text}</div><div class="chat-bubble-time">${getTime()}</div></div>`;
+  } else {
+    wrap.innerHTML = `<div><div class="chat-bubble user">${text}</div><div class="chat-bubble-time">${getTime()}</div></div>`;
+  }
+  chatMessages.appendChild(wrap);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function showTypingIndicator() {
+  const wrap = document.createElement('div');
+  wrap.className = 'chat-bubble-wrap'; wrap.id = 'typingIndicator';
+  wrap.innerHTML = `<div class="chat-bubble-avatar"><img src="assets/doctor_avatar_1784895249968.png" alt="Dr." /></div><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>`;
+  chatMessages.appendChild(wrap);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function removeTypingIndicator() { const el = document.getElementById('typingIndicator'); if (el) el.remove(); }
+function setResponding(val) {
+  isResponding = val;
+  if (val) { chatAvatarEl.classList.add('responding'); chatStatusText.textContent = 'Typing...'; }
+  else { chatAvatarEl.classList.remove('responding'); chatStatusText.textContent = 'Online · ENT Specialist'; }
+  document.getElementById('chatSendBtn').disabled = val;
+}
+async function sendChatMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text || isResponding) return;
+  input.value = ''; input.style.height = 'auto';
+  appendMessage('user', text);
+  setResponding(true); showTypingIndicator();
+  try {
+    const data = await apiSendChat(text);
+    removeTypingIndicator();
+    appendMessage('bot', (data.reply || 'Please call us at <strong>0309-8742674</strong> for assistance.').replace(/\n/g, '<br/>'));
+  } catch (err) {
+    removeTypingIndicator();
+    appendMessage('bot', 'I\'m unable to respond right now. Please call us at <strong>0309-8742674</strong> or <a href="https://wa.me/923098742674" target="_blank" style="color:var(--accent);">WhatsApp us</a>.');
+  } finally { setResponding(false); }
+}
+window.addEventListener('scroll', () => {
+  const h = document.querySelector('.site-header');
+  if (h) h.style.boxShadow = window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,0.12)' : '';
+});
+</script>
+
+<!-- Security Script to discourage code copying -->
+<script>
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+document.addEventListener('keydown', function(e) {
+  if (
+    e.key === 'F12' || 
+    (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) || 
+    (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j')) || 
+    (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c')) || 
+    (e.ctrlKey && (e.key === 'U' || e.key === 'u'))
+  ) {
+    e.preventDefault();
+    return false;
+  }
+});
+</script>
+
+</body>
+</html>
