@@ -54,6 +54,26 @@
     .page { display: none; animation: fadeInPage 0.4s ease; }
     .page.active { display: block; }
     @keyframes fadeInPage { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ===== URDU BILINGUAL: fix bidi text direction for text elements only =====
+       Layout (flex, grid, buttons dimensions) is NOT affected — only text flow.  */
+    body.lang-ur [data-i18n] {
+      direction: rtl;
+      unicode-bidi: embed;
+      text-align: right;
+    }
+    /* Nav links should stay centered/inline, just fix text direction */
+    body.lang-ur .nav-link[data-i18n],
+    body.lang-ur .nav-cta[data-i18n],
+    body.lang-ur .mobile-nav-link span[data-i18n],
+    body.lang-ur .footer-link[data-i18n] {
+      text-align: inherit;
+    }
+    /* Form labels: keep label layout but fix text dir */
+    body.lang-ur label [data-i18n],
+    body.lang-ur .form-label [data-i18n] {
+      display: inline;
+    }
     /* HEADER */
     .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-light); box-shadow: var(--shadow-sm); }
     .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 70px; display: flex; align-items: center; justify-content: space-between; }
@@ -403,11 +423,12 @@
       </div>
     </div>
     <nav class="nav-desktop" id="desktopNav">
-      <span class="nav-link active" data-page="home" onclick="navigate('home')">Home</span>
-      <span class="nav-link" data-page="about" onclick="navigate('about')">About Doctor</span>
-      <span class="nav-link" data-page="services" onclick="navigate('services')">Services</span>
-      <span class="nav-link" data-page="contact" onclick="navigate('contact')">Contact</span>
-      <span class="nav-cta" onclick="navigate('appointment')">Book Appointment</span>
+      <span class="nav-link active" data-page="home" onclick="navigate('home')" data-i18n="nav-home">Home</span>
+      <span class="nav-link" data-page="about" onclick="navigate('about')" data-i18n="nav-about">About Doctor</span>
+      <span class="nav-link" data-page="services" onclick="navigate('services')" data-i18n="nav-services">Services</span>
+      <span class="nav-link" data-page="contact" onclick="navigate('contact')" data-i18n="nav-contact">Contact</span>
+      <span class="nav-link" id="langToggleBtn" onclick="toggleLanguage()" style="font-weight:700; color:var(--primary);" data-i18n="nav-lang">اردو</span>
+      <span class="nav-cta" onclick="navigate('appointment')" data-i18n="nav-book">Book Appointment</span>
     </nav>
     <button class="hamburger" onclick="toggleMobileNav()" aria-label="Open menu">☰</button>
   </div>
@@ -428,16 +449,19 @@
       <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
     </div>
     <span class="mobile-nav-link active" data-page="home" onclick="navigate('home');toggleMobileNav()">
-      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> Home
+      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> <span data-i18n="nav-home">Home</span>
     </span>
     <span class="mobile-nav-link" data-page="about" onclick="navigate('about');toggleMobileNav()">
-      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> About Doctor
+      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> <span data-i18n="nav-about">About Doctor</span>
     </span>
     <span class="mobile-nav-link" data-page="services" onclick="navigate('services');toggleMobileNav()">
-      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span> Services
+      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span> <span data-i18n="nav-services">Services</span>
     </span>
     <span class="mobile-nav-link" data-page="contact" onclick="navigate('contact');toggleMobileNav()">
-      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span> Contact
+      <span class="mobile-nav-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span> <span data-i18n="nav-contact">Contact</span>
+    </span>
+    <span class="mobile-nav-link" id="mobileLangToggleBtn" onclick="toggleLanguage();toggleMobileNav()" style="font-weight:700; color:var(--primary); justify-content:center; background:rgba(26,95,138,0.1);" data-i18n="nav-lang">
+      اردو
     </span>
     <div class="mobile-nav-cta" onclick="navigate('appointment');toggleMobileNav()">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -458,19 +482,19 @@
       </div>
       <div class="hero-inner">
         <div class="hero-content">
-          <div class="hero-badge"><span class="hero-badge-dot"></span>Accepting New Patients</div>
-          <h1 class="hero-title">Expert ENT Care<span class="hero-title-name">Dr. Rana Humayun Babar</span></h1>
-          <p class="hero-credentials">MBBS, RMP, MS (ENT)</p>
-          <p class="hero-specialty">Endoscopic Sinus &amp; Cosmetic Nose Surgeon</p>
-          <p class="hero-desc">Providing exceptional ear, nose, throat, and aesthetic care with advanced endoscopic techniques. Trusted by thousands of patients across Kabirwala and surrounding areas.</p>
+          <div class="hero-badge"><span class="hero-badge-dot"></span><span data-i18n="hero-badge">Accepting New Patients</span></div>
+          <h1 class="hero-title"><span data-i18n="hero-title">Expert ENT Care</span><br><span class="hero-title-name" data-i18n="hero-name">Dr. Rana Humayun Babar</span></h1>
+          <p class="hero-credentials" data-i18n="hero-creds">MBBS, RMP, MS (ENT)</p>
+          <p class="hero-specialty" data-i18n="hero-spec">Endoscopic Sinus &amp; Cosmetic Nose Surgeon</p>
+          <p class="hero-desc" data-i18n="hero-desc">Providing exceptional ear, nose, throat, and aesthetic care with advanced endoscopic techniques. Trusted by thousands of patients across Kabirwala and surrounding areas.</p>
           <div class="hero-actions">
-            <button class="btn btn-accent btn-lg" onclick="navigate('appointment')">Book Appointment</button>
-            <button class="btn btn-ghost btn-lg" onclick="navigate('services')">Explore Services →</button>
+            <button class="btn btn-accent btn-lg" onclick="navigate('appointment')" data-i18n="hero-btn-book">Book Appointment</button>
+            <button class="btn btn-ghost btn-lg" onclick="navigate('services')" data-i18n="hero-btn-explore">Explore Services →</button>
           </div>
           <div class="hero-stats">
-            <div><div class="hero-stat-num">5000+</div><div class="hero-stat-label">Patients Treated</div></div>
-            <div><div class="hero-stat-num">8+</div><div class="hero-stat-label">Years Experience</div></div>
-            <div><div class="hero-stat-num">4</div><div class="hero-stat-label">Specializations</div></div>
+            <div><div class="hero-stat-num">5000+</div><div class="hero-stat-label" data-i18n="hero-stat1-lbl">Patients Treated</div></div>
+            <div><div class="hero-stat-num">8+</div><div class="hero-stat-label" data-i18n="hero-stat2-lbl">Years Experience</div></div>
+            <div><div class="hero-stat-num">4</div><div class="hero-stat-label" data-i18n="hero-stat3-lbl">Specializations</div></div>
           </div>
         </div>
         <div class="hero-visual">
@@ -516,40 +540,40 @@
           </div>
         </div>
         <div>
-          <div class="pill">Why Choose Us</div>
-          <h2 class="section-title">Better ENT Care.<br/><span>Better Life.</span></h2>
-          <p class="section-sub">At Wajid ENT Clinic, we combine advanced medical expertise with compassionate care to provide the best possible outcomes for every patient.</p>
+          <div class="pill" data-i18n="why-choose-pill">Why Choose Us</div>
+          <h2 class="section-title" data-i18n="why-title">Better ENT Care.<br/><span>Better Life.</span></h2>
+          <p class="section-sub" data-i18n="why-sub">At Wajid ENT Clinic, we combine advanced medical expertise with compassionate care to provide the best possible outcomes for every patient.</p>
           <div class="intro-features">
             <div class="intro-feature">
               <div class="intro-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-              <div><div class="intro-feature-title">Expert Qualifications</div><div class="intro-feature-text">MS (ENT) qualified specialist with comprehensive training in modern ENT procedures and techniques.</div></div>
+              <div><div class="intro-feature-title" data-i18n="feat1-title">Expert Qualifications</div><div class="intro-feature-text" data-i18n="feat1-text">MS (ENT) qualified specialist with comprehensive training in modern ENT procedures and techniques.</div></div>
             </div>
             <div class="intro-feature">
               <div class="intro-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14H4a1 1 0 0 1 0-2h5"/><path d="M12 4v10"/><path d="M10 2h4v4h-4z"/></svg></div>
-              <div><div class="intro-feature-title">Advanced Equipment</div><div class="intro-feature-text">State-of-the-art endoscopic equipment for precise diagnostics and minimally invasive treatments.</div></div>
+              <div><div class="intro-feature-title" data-i18n="feat2-title">Advanced Equipment</div><div class="intro-feature-text" data-i18n="feat2-text">State-of-the-art endoscopic equipment for precise diagnostics and minimally invasive treatments.</div></div>
             </div>
             <div class="intro-feature">
               <div class="intro-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-              <div><div class="intro-feature-title">Patient-Centered Care</div><div class="intro-feature-text">A warm, welcoming environment where every patient receives personalized attention and care.</div></div>
+              <div><div class="intro-feature-title" data-i18n="feat3-title">Patient-Centered Care</div><div class="intro-feature-text" data-i18n="feat3-text">A warm, welcoming environment where every patient receives personalized attention and care.</div></div>
             </div>
             <div class="intro-feature">
               <div class="intro-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-              <div><div class="intro-feature-title">Flexible Appointments</div><div class="intro-feature-text">Easy online booking with flexible hours including evening appointments to suit your schedule.</div></div>
+              <div><div class="intro-feature-title" data-i18n="feat4-title">Flexible Appointments</div><div class="intro-feature-text" data-i18n="feat4-text">Easy online booking with flexible hours including evening appointments to suit your schedule.</div></div>
             </div>
           </div>
           <div class="intro-stats-wrap">
-            <div class="intro-stat"><div class="intro-stat-num">8+</div><div class="intro-stat-label">Years Experience</div></div>
-            <div class="intro-stat"><div class="intro-stat-num">4</div><div class="intro-stat-label">Specialties</div></div>
+            <div class="intro-stat"><div class="intro-stat-num">8+</div><div class="intro-stat-label" data-i18n="stat1-lbl">Years Experience</div></div>
+            <div class="intro-stat"><div class="intro-stat-num">4</div><div class="intro-stat-label" data-i18n="stat2-lbl">Specialties</div></div>
           </div>
         </div>
       </div>
     </div>
     <section class="cta-section">
-      <h2>Ready to Feel Better?</h2>
-      <p>Book your consultation with Dr. Rana Humayun Babar today and take the first step toward better health.</p>
+      <h2 data-i18n="cta-home-h2">Ready to Feel Better?</h2>
+      <p data-i18n="cta-home-p">Book your consultation with Dr. Rana Humayun Babar today and take the first step toward better health.</p>
       <div class="cta-actions">
-        <button class="btn btn-ghost btn-lg" onclick="navigate('appointment')">Book Appointment</button>
-        <a href="https://wa.me/923098742674" target="_blank" class="btn btn-lg" style="background:rgba(37,211,102,0.2);color:white;border:1px solid rgba(37,211,102,0.5);">WhatsApp Us</a>
+        <button class="btn btn-ghost btn-lg" onclick="navigate('appointment')" data-i18n="cta-home-btn1">Book Appointment</button>
+        <a href="https://wa.me/923098742674" target="_blank" class="btn btn-lg" style="background:rgba(37,211,102,0.2);color:white;border:1px solid rgba(37,211,102,0.5);" data-i18n="cta-home-btn2">WhatsApp Us</a>
       </div>
     </section>
   </div>
@@ -557,9 +581,9 @@
   <!-- ===== ABOUT ===== -->
   <div class="page" id="page-about">
     <div class="about-hero">
-      <div class="pill" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:white;">About</div>
-      <h1>Meet Your Doctor</h1>
-      <p>Dedicated to excellence in ENT care and patient wellbeing</p>
+      <div class="pill" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:white;" data-i18n="about-pill">About</div>
+      <h1 data-i18n="about-h1">Meet Your Doctor</h1>
+      <p data-i18n="about-p">Dedicated to excellence in ENT care and patient wellbeing</p>
       <div class="page-hero-divider"></div>
     </div>
     <div class="about-content">
@@ -572,15 +596,15 @@
           <div class="doctor-info-card">
             <div class="doctor-info-row">
               <span class="doctor-info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
-              <div><div class="doctor-info-label">Qualification</div><div class="doctor-info-val">MBBS, RMP, MS (ENT)</div></div>
+              <div><div class="doctor-info-label" data-i18n="qual-label">Qualification</div><div class="doctor-info-val">MBBS, RMP, MS (ENT)</div></div>
             </div>
             <div class="doctor-info-row">
               <span class="doctor-info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/><path d="M2 22h20"/><path d="M12 6v4"/><path d="M10 8h4"/></svg></span>
-              <div><div class="doctor-info-label">Specialty</div><div class="doctor-info-val">Otorhinolaryngology (ENT)</div></div>
+              <div><div class="doctor-info-label" data-i18n="spec-label">Specialty</div><div class="doctor-info-val">Otorhinolaryngology (ENT)</div></div>
             </div>
             <div class="doctor-info-row">
               <span class="doctor-info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></span>
-              <div><div class="doctor-info-label">Surgical Expertise</div><div class="doctor-info-val">Endoscopic Sinus &amp; Cosmetic Nose Surgery</div></div>
+              <div><div class="doctor-info-label" data-i18n="surg-label">Surgical Expertise</div><div class="doctor-info-val">Endoscopic Sinus &amp; Cosmetic Nose Surgery</div></div>
             </div>
             <div class="doctor-info-row">
               <span class="doctor-info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
@@ -593,21 +617,21 @@
           </div>
         </div>
         <div class="about-bio">
-          <div class="pill">Biography</div>
+          <div class="pill" data-i18n="about-bio-pill">Biography</div>
           <h2>Dr. Rana Humayun Babar</h2>
           <div class="about-bio-sub">Endoscopic Sinus &amp; Cosmetic Nose Surgeon</div>
-          <p>Dr. Rana Humayun Babar is a highly qualified ENT specialist based in Kabirwala. With a strong foundation in medicine and advanced surgical training, he has dedicated his career to providing exceptional ENT care to patients across the region.</p>
-          <p>As an Otorhinolaryngologist, Dr. Humayun Babar specializes in endoscopic sinus surgery and cosmetic nose procedures, combining precision with an artistic eye to deliver outstanding results.</p>
-          <p>Dr. Humayun Babar is deeply committed to continuous medical education and stays current with the latest advances in ENT medicine and surgery. He believes in treating not just the condition but the whole person, taking time to understand each patient's unique concerns and goals.</p>
-          <p>At Wajid ENT Clinic, he has created a warm, welcoming environment where patients from Kabirwala, Jhang, and surrounding areas receive world-class ENT care close to home.</p>
-          <div class="about-section-title">Education &amp; Credentials</div>
+          <p data-i18n="about-bio-p1">Dr. Rana Humayun Babar is a highly qualified ENT specialist based in Kabirwala. With a strong foundation in medicine and advanced surgical training, he has dedicated his career to providing exceptional ENT care to patients across the region.</p>
+          <p data-i18n="about-bio-p2">As an Otorhinolaryngologist, Dr. Humayun Babar specializes in endoscopic sinus surgery and cosmetic nose procedures, combining precision with an artistic eye to deliver outstanding results.</p>
+          <p data-i18n="about-bio-p3">Dr. Humayun Babar is deeply committed to continuous medical education and stays current with the latest advances in ENT medicine and surgery. He believes in treating not just the condition but the whole person, taking time to understand each patient's unique concerns and goals.</p>
+          <p data-i18n="about-bio-p4">At Wajid ENT Clinic, he has created a warm, welcoming environment where patients from Kabirwala, Jhang, and surrounding areas receive world-class ENT care close to home.</p>
+          <div class="about-section-title" data-i18n="about-edu-title">Education &amp; Credentials</div>
           <div class="credentials-grid">
-            <div class="credential-card"><div class="credential-year">Medicine</div><div class="credential-degree">MBBS</div><div class="credential-inst">Bachelor of Medicine &amp; Surgery</div></div>
-            <div class="credential-card"><div class="credential-year">Licensing</div><div class="credential-degree">RMP</div><div class="credential-inst">Registered Medical Practitioner</div></div>
-            <div class="credential-card"><div class="credential-year">Specialization</div><div class="credential-degree">MS (ENT)</div><div class="credential-inst">Master of Surgery — Otorhinolaryngology</div></div>
-            <div class="credential-card"><div class="credential-year">Fellowship</div><div class="credential-degree">Endoscopy</div><div class="credential-inst">Advanced Endoscopic Sinus Surgery</div></div>
+            <div class="credential-card"><div class="credential-year" data-i18n="cred1-year">Medicine</div><div class="credential-degree">MBBS</div><div class="credential-inst" data-i18n="cred1-inst">Bachelor of Medicine &amp; Surgery</div></div>
+            <div class="credential-card"><div class="credential-year" data-i18n="cred2-year">Licensing</div><div class="credential-degree">RMP</div><div class="credential-inst" data-i18n="cred2-inst">Registered Medical Practitioner</div></div>
+            <div class="credential-card"><div class="credential-year" data-i18n="cred3-year">Specialization</div><div class="credential-degree">MS (ENT)</div><div class="credential-inst" data-i18n="cred3-inst">Master of Surgery — Otorhinolaryngology</div></div>
+            <div class="credential-card"><div class="credential-year" data-i18n="cred4-year">Fellowship</div><div class="credential-degree">Endoscopy</div><div class="credential-inst" data-i18n="cred4-inst">Advanced Endoscopic Sinus Surgery</div></div>
           </div>
-          <div class="about-section-title">Areas of Expertise</div>
+          <div class="about-section-title" data-i18n="about-expertise">Areas of Expertise</div>
           <div class="expertise-list">
             <span class="expertise-tag">Endoscopic Sinus Surgery</span>
             <span class="expertise-tag">Cosmetic Rhinoplasty</span>
@@ -620,7 +644,7 @@
             <span class="expertise-tag">Hearing Assessment</span>
             <span class="expertise-tag">Snoring Treatment</span>
           </div>
-          <div style="margin-top:40px;"><button class="btn btn-primary btn-lg" onclick="navigate('appointment')">Book Consultation</button></div>
+          <div style="margin-top:40px;"><button class="btn btn-primary btn-lg" onclick="navigate('appointment')" data-i18n="about-btn">Book Consultation</button></div>
         </div>
       </div>
     </div>
@@ -629,9 +653,9 @@
   <!-- ===== SERVICES ===== -->
   <div class="page" id="page-services">
     <div class="services-hero">
-      <div class="pill" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.9);">Our Services</div>
-      <h1>Comprehensive ENT Care</h1>
-      <p>Advanced diagnostic and treatment services for all ear, nose, throat, and aesthetic conditions</p>
+      <div class="pill" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.9);" data-i18n="svc-pill">Our Services</div>
+      <h1 data-i18n="svc-h1">Comprehensive ENT Care</h1>
+      <p data-i18n="svc-p">Advanced diagnostic and treatment services for all ear, nose, throat, and aesthetic conditions</p>
       <div class="page-hero-divider"></div>
     </div>
     <div class="services-content">
@@ -642,8 +666,8 @@
             <div class="service-card-label">Ear Care</div>
           </div>
           <div class="service-card-body">
-            <div class="service-card-name">Ear Care &amp; Audiology</div>
-            <p class="service-card-desc">Comprehensive diagnosis and treatment of all ear conditions using advanced audiological assessments and microsurgical techniques.</p>
+            <div class="service-card-name" data-i18n="svc1-name">Ear Care &amp; Audiology</div>
+            <p class="service-card-desc" data-i18n="svc1-desc">Comprehensive diagnosis and treatment of all ear conditions using advanced audiological assessments and microsurgical techniques.</p>
             <div class="service-conditions">
               <div class="service-condition">Hearing loss assessment &amp; treatment</div>
               <div class="service-condition">Ear infections (Otitis Media)</div>
@@ -652,7 +676,7 @@
               <div class="service-condition">Eardrum perforations &amp; repair</div>
               <div class="service-condition">Vertigo &amp; balance disorders</div>
             </div>
-            <button class="btn btn-primary" onclick="navigate('appointment')">Book Consultation →</button>
+            <button class="btn btn-primary" onclick="navigate('appointment')" data-i18n="svc-book-btn">Book Consultation →</button>
           </div>
         </div>
         <div class="service-card-big">
@@ -661,8 +685,8 @@
             <div class="service-card-label">Nose Care</div>
           </div>
           <div class="service-card-body">
-            <div class="service-card-name">Nose &amp; Sinus Care</div>
-            <p class="service-card-desc">Expert management of nasal and sinus conditions using state-of-the-art endoscopic technology. Minimally invasive procedures with faster recovery times.</p>
+            <div class="service-card-name" data-i18n="svc2-name">Nose &amp; Sinus Care</div>
+            <p class="service-card-desc" data-i18n="svc2-desc">Expert management of nasal and sinus conditions using state-of-the-art endoscopic technology. Minimally invasive procedures with faster recovery times.</p>
             <div class="service-conditions">
               <div class="service-condition">Functional Endoscopic Sinus Surgery (FESS)</div>
               <div class="service-condition">Nasal polyps removal</div>
@@ -671,7 +695,7 @@
               <div class="service-condition">Sinusitis management</div>
               <div class="service-condition">Nasal obstruction correction</div>
             </div>
-            <button class="btn btn-accent" onclick="navigate('appointment')">Book Consultation →</button>
+            <button class="btn btn-accent" onclick="navigate('appointment')" data-i18n="svc-book-btn">Book Consultation →</button>
           </div>
         </div>
         <div class="service-card-big">
@@ -680,8 +704,8 @@
             <div class="service-card-label">Throat Care</div>
           </div>
           <div class="service-card-body">
-            <div class="service-card-name">Throat &amp; Voice Care</div>
-            <p class="service-card-desc">Comprehensive evaluation and treatment of throat conditions including voice disorders, swallowing difficulties, and tonsil problems.</p>
+            <div class="service-card-name" data-i18n="svc3-name">Throat &amp; Voice Care</div>
+            <p class="service-card-desc" data-i18n="svc3-desc">Comprehensive evaluation and treatment of throat conditions including voice disorders, swallowing difficulties, and tonsil problems.</p>
             <div class="service-conditions">
               <div class="service-condition">Tonsillectomy &amp; adenoidectomy</div>
               <div class="service-condition">Voice disorders &amp; hoarseness</div>
@@ -690,7 +714,7 @@
               <div class="service-condition">Snoring &amp; sleep apnea</div>
               <div class="service-condition">Laryngoscopy &amp; evaluation</div>
             </div>
-            <button class="btn" style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:white;box-shadow:0 4px 16px rgba(124,58,237,0.35);" onclick="navigate('appointment')">Book Consultation →</button>
+            <button class="btn" style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:white;box-shadow:0 4px 16px rgba(124,58,237,0.35);" onclick="navigate('appointment')" data-i18n="svc-book-btn">Book Consultation →</button>
           </div>
         </div>
         <div class="service-card-big">
@@ -699,8 +723,8 @@
             <div class="service-card-label">Aesthetic Care</div>
           </div>
           <div class="service-card-body">
-            <div class="service-card-name">Aesthetic Nose Surgery</div>
-            <p class="service-card-desc">Expert cosmetic rhinoplasty and nose reshaping procedures that balance functional improvement with aesthetic enhancement.</p>
+            <div class="service-card-name" data-i18n="svc4-name">Aesthetic Nose Surgery</div>
+            <p class="service-card-desc" data-i18n="svc4-desc">Expert cosmetic rhinoplasty and nose reshaping procedures that balance functional improvement with aesthetic enhancement.</p>
             <div class="service-conditions">
               <div class="service-condition">Cosmetic rhinoplasty (nose job)</div>
               <div class="service-condition">Nose tip refinement</div>
@@ -709,36 +733,36 @@
               <div class="service-condition">Revision rhinoplasty</div>
               <div class="service-condition">Non-surgical nose reshaping</div>
             </div>
-            <button class="btn" style="background:linear-gradient(135deg,#c9a84c,#e8c96a);color:#0f172a;box-shadow:0 4px 16px rgba(201,168,76,0.35);" onclick="navigate('appointment')">Book Consultation →</button>
+            <button class="btn" style="background:linear-gradient(135deg,#c9a84c,#e8c96a);color:#0f172a;box-shadow:0 4px 16px rgba(201,168,76,0.35);" onclick="navigate('appointment')" data-i18n="svc-book-btn">Book Consultation →</button>
           </div>
         </div>
       </div>
       <div style="margin-top:72px;">
         <div class="section-header center">
-          <div class="pill">Our Promise</div>
-          <h2 class="section-title">Why Patients Choose <span>Wajid ENT Clinic</span></h2>
+          <div class="pill" data-i18n="why-promise-pill">Our Promise</div>
+          <h2 class="section-title" data-i18n="why-promise-h2">Why Patients Choose <span>Wajid ENT Clinic</span></h2>
         </div>
         <div class="services-mini-grid">
-          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="why-card-title">Expert ENT Care</div><div class="why-card-text">MS (ENT) qualified surgeon with advanced training in endoscopic procedures and cosmetic surgery.</div></div>
-          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="why-card-title">Experienced Team</div><div class="why-card-text">A dedicated and compassionate medical team committed to your health and recovery.</div></div>
-          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="why-card-title">Patient Comfort</div><div class="why-card-text">A warm, patient-friendly environment designed to make your visit as comfortable as possible.</div></div>
-          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div><div class="why-card-title">Modern Facilities</div><div class="why-card-text">State-of-the-art endoscopic and audiological equipment for precise diagnosis and treatment.</div></div>
+          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="why-card-title" data-i18n="why1-title">Expert ENT Care</div><div class="why-card-text" data-i18n="why1-text">MS (ENT) qualified surgeon with advanced training in endoscopic procedures and cosmetic surgery.</div></div>
+          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="why-card-title" data-i18n="why2-title">Experienced Team</div><div class="why-card-text" data-i18n="why2-text">A dedicated and compassionate medical team committed to your health and recovery.</div></div>
+          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="why-card-title" data-i18n="why3-title">Patient Comfort</div><div class="why-card-text" data-i18n="why3-text">A warm, patient-friendly environment designed to make your visit as comfortable as possible.</div></div>
+          <div class="why-card"><div class="why-card-icon"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div><div class="why-card-title" data-i18n="why4-title">Modern Facilities</div><div class="why-card-text" data-i18n="why4-text">State-of-the-art endoscopic and audiological equipment for precise diagnosis and treatment.</div></div>
         </div>
       </div>
     </div>
     <section class="cta-section" style="margin-top:0;">
-      <h2>Need ENT Care?</h2>
-      <p>Schedule your appointment with Dr. Rana Humayun Babar and get expert care today.</p>
-      <div class="cta-actions"><button class="btn btn-ghost btn-lg" onclick="navigate('appointment')">Book Appointment</button></div>
+      <h2 data-i18n="cta-svc-h2">Need ENT Care?</h2>
+      <p data-i18n="cta-svc-p">Schedule your appointment with Dr. Rana Humayun Babar and get expert care today.</p>
+      <div class="cta-actions"><button class="btn btn-ghost btn-lg" onclick="navigate('appointment')" data-i18n="nav-book">Book Appointment</button></div>
     </section>
   </div>
 
   <!-- ===== APPOINTMENT ===== -->
   <div class="page" id="page-appointment">
     <div class="apt-hero">
-      <div class="pill" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:white;">Appointments</div>
-      <h1>Book an Appointment</h1>
-      <p>Fill in your details and we'll confirm your appointment as soon as possible</p>
+      <div class="pill" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:white;" data-i18n="apt-pill">Appointments</div>
+      <h1 data-i18n="apt-h1">Book an Appointment</h1>
+      <p data-i18n="apt-p">Fill in your details and we'll confirm your appointment as soon as possible</p>
       <div class="page-hero-divider"></div>
     </div>
     <div class="apt-content">
@@ -751,15 +775,15 @@
             </div>
             <div class="apt-info-item">
               <div class="apt-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-              <div><div class="apt-info-label">Address</div><div class="apt-info-val">Jhang Road, opposite Al Shifa Orthopedic Hospital, Kabirwala</div></div>
+              <div><div class="apt-info-label" data-i18n="apt-addr-label">Address</div><div class="apt-info-val" data-i18n="apt-addr-val">Jhang Road, opposite Al Shifa Orthopedic Hospital, Kabirwala</div></div>
             </div>
             <div class="apt-info-item">
               <div class="apt-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg></div>
-              <div><div class="apt-info-label">Phone / WhatsApp</div><div class="apt-info-val"><a href="tel:+923098742674" style="color:var(--primary);">0309-8742674</a></div></div>
+              <div><div class="apt-info-label" data-i18n="apt-phone-label">Phone / WhatsApp</div><div class="apt-info-val"><a href="tel:+923098742674" style="color:var(--primary);">0309-8742674</a></div></div>
             </div>
             <div class="apt-info-item">
               <div class="apt-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-              <div><div class="apt-info-label">Clinic Hours</div><div class="apt-info-val">Mon–Sat: 10:00 AM – 9:00 PM</div></div>
+              <div><div class="apt-info-label" data-i18n="apt-hours-label">Clinic Hours</div><div class="apt-info-val" data-i18n="apt-hours-val">Mon–Sat: 10:00 AM – 9:00 PM</div></div>
             </div>
           </div>
           <div class="apt-info-card">
@@ -768,40 +792,40 @@
               Before Your Visit
             </div>
             <div style="font-size:13px;color:var(--foreground-muted);line-height:1.8;">
-              <p style="margin-bottom:8px;">• Bring any previous medical reports</p>
-              <p style="margin-bottom:8px;">• List of current medications</p>
-              <p style="margin-bottom:8px;">• Previous ENT assessments if any</p>
-              <p style="margin-bottom:8px;">• Arrive 10 minutes early</p>
-              <p>• Bring a valid ID for registration</p>
+              <p style="margin-bottom:8px;" data-i18n="apt-before-1">• Bring any previous medical reports</p>
+              <p style="margin-bottom:8px;" data-i18n="apt-before-2">• List of current medications</p>
+              <p style="margin-bottom:8px;" data-i18n="apt-before-3">• Previous ENT assessments if any</p>
+              <p style="margin-bottom:8px;" data-i18n="apt-before-4">• Arrive 10 minutes early</p>
+              <p data-i18n="apt-before-5">• Bring a valid ID for registration</p>
             </div>
           </div>
         </div>
         <div class="form-card">
-          <div class="form-title">Request an Appointment</div>
-          <div class="form-sub">Fill in your details below and our team will confirm your booking shortly.</div>
+          <div class="form-title" data-i18n="form-title">Request an Appointment</div>
+          <div class="form-sub" data-i18n="form-sub">Fill in your details below and our team will confirm your booking shortly.</div>
           <form class="form-fields" id="appointmentForm" onsubmit="handleAppointmentSubmit(event)">
             <div class="form-grid">
               <div class="form-group">
-                <label class="form-label" for="apt-name">Full Name <span class="required">*</span></label>
-                <input type="text" id="apt-name" class="form-input" placeholder="e.g. Ahmed Ali" autocomplete="name" />
+                <label class="form-label" for="apt-name"><span data-i18n="lbl-name">Full Name</span> <span class="required">*</span></label>
+                <input type="text" id="apt-name" class="form-input" data-i18n-ph="ph-name" placeholder="e.g. Ahmed Ali" autocomplete="name" />
                 <span class="form-error" id="err-name"></span>
               </div>
               <div class="form-group">
-                <label class="form-label" for="apt-phone">Phone Number <span class="required">*</span></label>
+                <label class="form-label" for="apt-phone"><span data-i18n="lbl-phone">Phone Number</span> <span class="required">*</span></label>
                 <input type="tel" id="apt-phone" class="form-input" placeholder="e.g. 0309-8742674" autocomplete="tel" />
                 <span class="form-error" id="err-phone"></span>
               </div>
             </div>
             <div class="form-grid">
               <div class="form-group">
-                <label class="form-label" for="apt-date">Preferred Date <span class="required">*</span></label>
+                <label class="form-label" for="apt-date"><span data-i18n="lbl-date">Preferred Date</span> <span class="required">*</span></label>
                 <input type="date" id="apt-date" class="form-input" />
                 <span class="form-error" id="err-date"></span>
               </div>
               <div class="form-group">
-                <label class="form-label" for="apt-time">Preferred Time <span class="required">*</span></label>
+                <label class="form-label" for="apt-time"><span data-i18n="lbl-time">Preferred Time</span> <span class="required">*</span></label>
                 <select id="apt-time" class="form-select">
-                  <option value="">Select a time slot</option>
+                  <option value="" data-i18n="time-slot-ph">Select a time slot</option>
                   <option value="10:00 AM">10:00 AM</option>
                   <option value="11:00 AM">11:00 AM</option>
                   <option value="12:00 PM">12:00 PM</option>
@@ -817,16 +841,16 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label" for="apt-reason">Reason for Visit <span class="required">*</span></label>
-              <textarea id="apt-reason" class="form-textarea" placeholder="Briefly describe your symptoms or reason for the visit..." maxlength="500"></textarea>
+              <label class="form-label" for="apt-reason"><span data-i18n="lbl-reason">Reason for Visit</span> <span class="required">*</span></label>
+              <textarea id="apt-reason" class="form-textarea" data-i18n-ph="ph-reason" placeholder="Briefly describe your symptoms or reason for the visit..." maxlength="500"></textarea>
               <span class="form-error" id="err-reason"></span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="apt-email">Email Address <span style="color:var(--foreground-muted);font-weight:400;">(Optional — doctor will reply by email if provided)</span></label>
-              <input type="email" id="apt-email" class="form-input" placeholder="your@email.com" autocomplete="email" />
-              <span style="font-size:12px;color:var(--foreground-subtle);">If no email, doctor will contact you by phone to confirm the appointment.</span>
+              <label class="form-label" for="apt-email"><span data-i18n="lbl-email">Email Address</span> <span style="color:var(--foreground-muted);font-weight:400;" data-i18n="lbl-email-note">(Optional — doctor will reply by email if provided)</span></label>
+              <input type="email" id="apt-email" class="form-input" data-i18n-ph="ph-email" placeholder="your@email.com" autocomplete="email" />
+              <span style="font-size:12px;color:var(--foreground-subtle);" data-i18n="email-hint">If no email, doctor will contact you by phone to confirm the appointment.</span>
             </div>
-            <button type="submit" class="form-submit" id="apt-submit-btn">Request Appointment</button>
+            <button type="submit" class="form-submit" id="apt-submit-btn" data-i18n="submit-btn">Request Appointment</button>
           </form>
         </div>
       </div>
@@ -836,9 +860,9 @@
   <!-- ===== CONTACT ===== -->
   <div class="page" id="page-contact">
     <div class="contact-hero">
-      <div class="pill" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:white;">Contact Us</div>
-      <h1>Get In Touch</h1>
-      <p>We're here to help. Reach out anytime during clinic hours</p>
+      <div class="pill" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:white;" data-i18n="contact-pill">Contact Us</div>
+      <h1 data-i18n="contact-h1">Get In Touch</h1>
+      <p data-i18n="contact-p">We're here to help. Reach out anytime during clinic hours</p>
       <div class="page-hero-divider"></div>
     </div>
     <div class="contact-content">
@@ -847,39 +871,39 @@
           <div class="contact-card">
             <div class="contact-card-title">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Find Us
+              <span data-i18n="find-us">Find Us</span>
             </div>
             <div class="contact-item">
               <div class="contact-icon-wrap blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-              <div><div class="contact-item-label">Address</div><div class="contact-item-val">Jhang Road, opposite Al Shifa<br/>Orthopedic Hospital, Kabirwala</div></div>
+              <div><div class="contact-item-label" data-i18n="ct-addr-label">Address</div><div class="contact-item-val"><span data-i18n="ct-addr-val1">Jhang Road, opposite Al Shifa</span><br/><span data-i18n="ct-addr-val2">Orthopedic Hospital, Kabirwala</span></div></div>
             </div>
             <div class="contact-item">
               <div class="contact-icon-wrap teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg></div>
-              <div><div class="contact-item-label">Phone</div><div class="contact-item-val"><a href="tel:+923098742674">0309-8742674</a></div></div>
+              <div><div class="contact-item-label" data-i18n="ct-phone-label">Phone</div><div class="contact-item-val"><a href="tel:+923098742674">0309-8742674</a></div></div>
             </div>
             <div class="contact-item">
               <div class="contact-icon-wrap green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-              <div><div class="contact-item-label">WhatsApp</div><div class="contact-item-val"><a href="https://wa.me/923098742674" target="_blank">Chat on WhatsApp →</a></div></div>
+              <div><div class="contact-item-label" data-i18n="ct-wa-label">WhatsApp</div><div class="contact-item-val"><a href="https://wa.me/923098742674" target="_blank" data-i18n="ct-wa-link">Chat on WhatsApp →</a></div></div>
             </div>
           </div>
           <div class="contact-card">
             <div class="contact-card-title">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              Clinic Hours
+              <span data-i18n="clinic-hours-title">Clinic Hours</span>
             </div>
             <table class="hours-table">
-              <tr><td><strong>Monday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
-              <tr><td><strong>Tuesday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
-              <tr><td><strong>Wednesday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
-              <tr><td><strong>Thursday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
-              <tr><td><strong>Friday</strong></td><td>4:00 PM – 9:00 PM</td></tr>
-              <tr><td><strong>Saturday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
-              <tr><td><strong style="color:var(--error);">Sunday</strong></td><td style="color:var(--error);">Closed</td></tr>
+              <tr><td><strong data-i18n="day-mon">Monday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
+              <tr><td><strong data-i18n="day-tue">Tuesday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
+              <tr><td><strong data-i18n="day-wed">Wednesday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
+              <tr><td><strong data-i18n="day-thu">Thursday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
+              <tr><td><strong data-i18n="day-fri">Friday</strong></td><td>4:00 PM – 9:00 PM</td></tr>
+              <tr><td><strong data-i18n="day-sat">Saturday</strong></td><td>10:00 AM – 9:00 PM</td></tr>
+              <tr><td><strong style="color:var(--error);" data-i18n="day-sun">Sunday</strong></td><td style="color:var(--error);" data-i18n="closed">Closed</td></tr>
             </table>
           </div>
           <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="navigate('appointment')">Book Appointment</button>
-            <a href="https://wa.me/923098742674" target="_blank" class="btn" style="background:#25d366;color:white;box-shadow:0 4px 16px rgba(37,211,102,0.35);">WhatsApp</a>
+            <button class="btn btn-primary" onclick="navigate('appointment')" data-i18n="contact-book-btn">Book Appointment</button>
+            <a href="https://wa.me/923098742674" target="_blank" class="btn" style="background:#25d366;color:white;box-shadow:0 4px 16px rgba(37,211,102,0.35);" data-i18n="ct-wa-label">WhatsApp</a>
           </div>
         </div>
         <div>
@@ -902,10 +926,10 @@
       <div>
         <div class="footer-brand-name">Wajid ENT Clinic</div>
         <div class="footer-brand-sub">ENT • Aesthetic • Care</div>
-        <p class="footer-tagline">Expert ENT care by Dr. Rana Humayun Babar (MBBS, RMP, MS ENT). Providing advanced endoscopic sinus surgery and cosmetic nose care in Kabirwala.</p>
+        <p class="footer-tagline" data-i18n="footer-tagline">Expert ENT care by Dr. Rana Humayun Babar (MBBS, RMP, MS ENT). Providing advanced endoscopic sinus surgery and cosmetic nose care in Kabirwala.</p>
         <div class="footer-contact-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Jhang Road, opposite Al Shifa Orthopedic Hospital, Kabirwala</span>
+          <span data-i18n="footer-addr">Jhang Road, opposite Al Shifa Orthopedic Hospital, Kabirwala</span>
         </div>
         <div class="footer-contact-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
@@ -913,27 +937,27 @@
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Quick Links</div>
-        <span class="footer-link" onclick="navigate('home')">Home</span>
-        <span class="footer-link" onclick="navigate('about')">About Doctor</span>
-        <span class="footer-link" onclick="navigate('services')">Services</span>
-        <span class="footer-link" onclick="navigate('appointment')">Book Appointment</span>
-        <span class="footer-link" onclick="navigate('contact')">Contact Us</span>
+        <div class="footer-col-title" data-i18n="footer-ql">Quick Links</div>
+        <span class="footer-link" onclick="navigate('home')" data-i18n="footer-ql-home">Home</span>
+        <span class="footer-link" onclick="navigate('about')" data-i18n="footer-ql-about">About Doctor</span>
+        <span class="footer-link" onclick="navigate('services')" data-i18n="footer-ql-svc">Services</span>
+        <span class="footer-link" onclick="navigate('appointment')" data-i18n="footer-ql-book">Book Appointment</span>
+        <span class="footer-link" onclick="navigate('contact')" data-i18n="footer-ql-ct">Contact Us</span>
       </div>
       <div>
-        <div class="footer-col-title">Clinic Hours</div>
-        <div class="footer-hours-item"><span>Mon – Thu</span><span>10 AM – 9 PM</span></div>
-        <div class="footer-hours-item"><span>Friday</span><span>4 PM – 9 PM</span></div>
-        <div class="footer-hours-item"><span>Saturday</span><span>10 AM – 9 PM</span></div>
-        <div class="footer-hours-item"><span>Sunday</span><span style="color:#ef4444;">Closed</span></div>
+        <div class="footer-col-title" data-i18n="footer-cl">Clinic Hours</div>
+        <div class="footer-hours-item"><span data-i18n="footer-h1">Mon – Thu</span><span>10 AM – 9 PM</span></div>
+        <div class="footer-hours-item"><span data-i18n="footer-h2-day">Friday</span><span>4 PM – 9 PM</span></div>
+        <div class="footer-hours-item"><span data-i18n="footer-h3-day">Saturday</span><span>10 AM – 9 PM</span></div>
+        <div class="footer-hours-item"><span data-i18n="footer-h4-day">Sunday</span><span style="color:#ef4444;" data-i18n="footer-h4-val">Closed</span></div>
         <div style="margin-top:16px;padding:12px 14px;background:rgba(77,208,196,0.1);border:1px solid rgba(77,208,196,0.2);border-radius:10px;font-size:12px;color:rgba(255,255,255,0.8);">
-          <strong style="color:#4dd0c4;">Emergency?</strong><br/>Call us at 0309-8742674
+          <strong style="color:#4dd0c4;" data-i18n="footer-emg">Emergency?</strong><br/><span data-i18n="footer-emg-call">Call us at 0309-8742674</span>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Wajid ENT Clinic. All rights reserved. Better ENT Care. Better Life.</div>
-      <div class="footer-badge"><div class="footer-badge-dot"></div><span>Open Today Until 9:00 PM</span></div>
+      <div class="footer-copy" data-i18n="footer-copy">© 2025 Wajid ENT Clinic. All rights reserved. Better ENT Care. Better Life.</div>
+      <div class="footer-badge"><div class="footer-badge-dot"></div><span data-i18n="footer-open">Open Today Until 9:00 PM</span></div>
     </div>
   </div>
 </footer>
@@ -1161,10 +1185,10 @@ document.addEventListener('contextmenu', function(e) {
 });
 document.addEventListener('keydown', function(e) {
   if (
-    e.key === 'F12' || 
-    (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) || 
-    (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j')) || 
-    (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c')) || 
+    e.key === 'F12' ||
+    (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) ||
+    (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j')) ||
+    (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c')) ||
     (e.ctrlKey && (e.key === 'U' || e.key === 'u'))
   ) {
     e.preventDefault();
@@ -1173,5 +1197,226 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
+<script src="chat.js"></script>
+
+<!-- ===== LANGUAGE TOGGLE SCRIPT ===== -->
+<script>
+(function() {
+  var currentLang = 'en';
+
+  // ── Translation dictionary ──
+  // Rules:
+  // 1. Medical/professional terms (ENT, MBBS, RMP, MS, Rhinoplasty, FESS etc.) stay same in both languages
+  // 2. Place names (Kabirwala, Jhang Road, Al Shifa) stay same
+  // 3. Numbers and phone numbers stay same
+  var T = {
+    // NAV
+    'nav-home':        { en: 'Home',           ur: 'ہوم' },
+    'nav-about':       { en: 'About Doctor',   ur: 'ڈاکٹر کے بارے میں' },
+    'nav-services':    { en: 'Services',       ur: 'خدمات' },
+    'nav-contact':     { en: 'Contact',        ur: 'رابطہ کریں' },
+    'nav-book':        { en: 'Book Appointment', ur: 'وقت بُک کریں' },
+    'nav-lang':        { en: 'اردو',           ur: 'English' },
+
+    // HERO
+    'hero-badge':      { en: 'Accepting New Patients', ur: 'نئے مریضوں کا استقبال ہے' },
+    'hero-title':      { en: 'Expert ENT Care', ur: 'ماہر ENT علاج' },
+    'hero-name':       { en: 'Dr. Rana Humayun Babar', ur: 'ڈاکٹر رانا ہمایوں بابر' },
+    'hero-creds':      { en: 'MBBS, RMP, MS (ENT)', ur: 'MBBS, RMP, MS (ENT)' },
+    'hero-spec':       { en: 'Endoscopic Sinus & Cosmetic Nose Surgeon', ur: 'Endoscopic Sinus اور Cosmetic Nose Surgeon' },
+    'hero-desc':       { en: 'Providing exceptional ear, nose, throat, and aesthetic care with advanced endoscopic techniques. Trusted by thousands of patients across Kabirwala and surrounding areas.', ur: 'جدید  endoscopic تکنیک کے ساتھ کان، ناک، گلے اور خوبصورتی کا بہترین علاج۔ کبیروالہ اور گردونواح کے ہزاروں مریضوں کا اعتماد۔' },
+    'hero-btn-book':   { en: 'Book Appointment',    ur: 'وقت بُک کریں' },
+    'hero-btn-explore':{ en: 'Explore Services →',  ur: 'خدمات دیکھیں →' },
+    'hero-stat1-lbl':  { en: 'Patients Treated',    ur: 'مریض ٹھیک ہوئے' },
+    'hero-stat2-lbl':  { en: 'Years Experience',    ur: 'سال کا تجربہ' },
+    'hero-stat3-lbl':  { en: 'Specializations',     ur: 'خصوصی شعبے' },
+
+    // INTRO SECTION
+    'why-choose-pill': { en: 'Why Choose Us',       ur: 'ہمیں کیوں چُنیں' },
+    'why-title':       { en: 'Better ENT Care.<br/><span>Better Life.</span>', ur: 'بہترین ENT علاج۔<br/><span>بہترین زندگی۔</span>' },
+    'why-sub':         { en: 'At Wajid ENT Clinic, we combine advanced medical expertise with compassionate care to provide the best possible outcomes for every patient.', ur: 'واجد ENT Clinic میں، ہم ہر مریض کو جدید طبی مہارت اور بہترین دیکھ بھال فراہم کرتے ہیں۔' },
+    'feat1-title':     { en: 'Expert Qualifications',   ur: 'اعلیٰ تعلیم' },
+    'feat1-text':      { en: 'MS (ENT) qualified specialist with comprehensive training in modern ENT procedures and techniques.', ur: 'MS (ENT) qualified ماہر، جدید ENT طریقوں میں مکمل تربیت یافتہ۔' },
+    'feat2-title':     { en: 'Advanced Equipment',      ur: 'جدید آلات' },
+    'feat2-text':      { en: 'State-of-the-art endoscopic equipment for precise diagnostics and minimally invasive treatments.', ur: 'درست تشخیص اور کم تکلیف دہ علاج کے لیے جدید endoscopic آلات۔' },
+    'feat3-title':     { en: 'Patient-Centered Care',   ur: 'مریض پہلے' },
+    'feat3-text':      { en: 'A warm, welcoming environment where every patient receives personalized attention and care.', ur: 'گرمجوش ماحول جہاں ہر مریض کو ذاتی توجہ اور دیکھ بھال ملتی ہے۔' },
+    'feat4-title':     { en: 'Flexible Appointments',   ur: 'آسان وقت' },
+    'feat4-text':      { en: 'Easy online booking with flexible hours including evening appointments to suit your schedule.', ur: 'آسان آن لائن بکنگ اور شام کے اوقات بھی دستیاب ہیں۔' },
+    'stat1-lbl':       { en: 'Years Experience',        ur: 'سال کا تجربہ' },
+    'stat2-lbl':       { en: 'Specialties',             ur: 'خصوصی شعبے' },
+
+    // CTA HOME
+    'cta-home-h2':     { en: 'Ready to Feel Better?',  ur: 'بہتر صحت کے لیے تیار ہیں؟' },
+    'cta-home-p':      { en: 'Book your consultation with Dr. Rana Humayun Babar today and take the first step toward better health.', ur: 'آج ہی ڈاکٹر رانا ہمایوں بابر سے مشاورت بُک کریں۔' },
+    'cta-home-btn1':   { en: 'Book Appointment',        ur: 'وقت بُک کریں' },
+    'cta-home-btn2':   { en: 'WhatsApp Us',             ur: 'WhatsApp کریں' },
+
+    // ABOUT PAGE
+    'about-pill':      { en: 'About',                   ur: 'بارے میں' },
+    'about-h1':        { en: 'Meet Your Doctor',        ur: 'اپنے ڈاکٹر سے ملیں' },
+    'about-p':         { en: 'Dedicated to excellence in ENT care and patient wellbeing', ur: 'ENT علاج اور مریضوں کی بہبود میں عمدگی کے لیے وقف' },
+    'about-bio-pill':  { en: 'Biography',               ur: 'سوانح حیات' },
+    'about-bio-p1':    { en: 'Dr. Rana Humayun Babar is a highly qualified ENT specialist based in Kabirwala. With a strong foundation in medicine and advanced surgical training, he has dedicated his career to providing exceptional ENT care to patients across the region.', ur: 'ڈاکٹر رانا ہمایوں بابر کبیروالہ میں ایک انتہائی ماہر ENT اسپیشلسٹ ہیں۔ طب میں مضبوط بنیاد اور جدید سرجیکل تربیت کے ساتھ، انہوں نے اپنا کیریئر خطے کے مریضوں کو بہترین ENT علاج فراہم کرنے میں وقف کیا ہے۔' },
+    'about-bio-p2':    { en: 'As an Otorhinolaryngologist, Dr. Humayun Babar specializes in endoscopic sinus surgery and cosmetic nose procedures, combining precision with an artistic eye to deliver outstanding results.', ur: 'ایک Otorhinolaryngologist کے طور پر، ڈاکٹر ہمایوں بابر endoscopic sinus surgery اور cosmetic nose procedures کے ماہر ہیں۔' },
+    'about-bio-p3':    { en: 'Dr. Humayun Babar is deeply committed to continuous medical education and stays current with the latest advances in ENT medicine and surgery. He believes in treating not just the condition but the whole person.', ur: 'ڈاکٹر ہمایوں بابر جدید طبی تعلیم کے لیے پرعزم ہیں۔ وہ صرف بیماری نہیں، بلکہ مریض کو مکمل طور پر علاج کرنے میں یقین رکھتے ہیں۔' },
+    'about-bio-p4':    { en: 'At Wajid ENT Clinic, he has created a warm, welcoming environment where patients from Kabirwala, Jhang, and surrounding areas receive world-class ENT care close to home.', ur: 'واجد ENT Clinic میں، انہوں نے ایک گرم اور خوش آمدید ماحول بنایا ہے جہاں کبیروالہ، جھنگ اور گردونواح کے مریض قریب سے بہترین ENT علاج حاصل کرتے ہیں۔' },
+    'about-edu-title': { en: 'Education & Credentials',  ur: 'تعلیم اور سند' },
+    'cred1-year':      { en: 'Medicine',                 ur: 'طب' },
+    'cred1-inst':      { en: 'Bachelor of Medicine & Surgery', ur: 'Bachelor of Medicine & Surgery' },
+    'cred2-year':      { en: 'Licensing',                ur: 'لائسنسنگ' },
+    'cred2-inst':      { en: 'Registered Medical Practitioner', ur: 'Registered Medical Practitioner' },
+    'cred3-year':      { en: 'Specialization',           ur: 'تخصص' },
+    'cred3-inst':      { en: 'Master of Surgery — Otorhinolaryngology', ur: 'Master of Surgery — Otorhinolaryngology' },
+    'cred4-year':      { en: 'Fellowship',               ur: 'فیلوشپ' },
+    'cred4-inst':      { en: 'Advanced Endoscopic Sinus Surgery', ur: 'Advanced Endoscopic Sinus Surgery' },
+    'about-expertise': { en: 'Areas of Expertise',       ur: 'مہارت کے شعبے' },
+    'about-btn':       { en: 'Book Consultation',        ur: 'مشاورت بُک کریں' },
+    'qual-label':      { en: 'Qualification',            ur: 'قابلیت' },
+    'spec-label':      { en: 'Specialty',                ur: 'خصوصیت' },
+    'surg-label':      { en: 'Surgical Expertise',       ur: 'سرجیکل مہارت' },
+    'clinic-label':    { en: 'Clinic',                   ur: 'کلینک' },
+    'contact-label':   { en: 'Contact',                  ur: 'رابطہ' },
+
+    // SERVICES PAGE
+    'svc-pill':        { en: 'Our Services',            ur: 'ہماری خدمات' },
+    'svc-h1':          { en: 'Comprehensive ENT Care',  ur: 'مکمل ENT علاج' },
+    'svc-p':           { en: 'Advanced diagnostic and treatment services for all ear, nose, throat, and aesthetic conditions', ur: 'کان، ناک، گلے اور خوبصورتی کی تمام بیماریوں کی جدید تشخیص اور علاج' },
+    'svc1-name':       { en: 'Ear Care & Audiology',    ur: 'کان کا علاج اور Audiology' },
+    'svc1-desc':       { en: 'Comprehensive diagnosis and treatment of all ear conditions using advanced audiological assessments and microsurgical techniques.', ur: 'جدید audiological تشخیص اور microsurgical تکنیک سے کان کی تمام بیماریوں کا مکمل علاج۔' },
+    'svc2-name':       { en: 'Nose & Sinus Care',       ur: 'ناک اور Sinus کا علاج' },
+    'svc2-desc':       { en: 'Expert management of nasal and sinus conditions using state-of-the-art endoscopic technology. Minimally invasive procedures with faster recovery times.', ur: 'جدید endoscopic ٹیکنالوجی سے ناک اور sinus کی بیماریوں کا ماہرانہ علاج، تیز ریکوری کے ساتھ۔' },
+    'svc3-name':       { en: 'Throat & Voice Care',     ur: 'گلے اور آواز کا علاج' },
+    'svc3-desc':       { en: 'Comprehensive evaluation and treatment of throat conditions including voice disorders, swallowing difficulties, and tonsil problems.', ur: 'آواز کی بیماریوں، نگلنے کی تکلیف اور ٹانسلز کا مکمل معائنہ اور علاج۔' },
+    'svc4-name':       { en: 'Aesthetic Nose Surgery',  ur: 'ناک کی Aesthetic Surgery' },
+    'svc4-desc':       { en: 'Expert cosmetic rhinoplasty and nose reshaping procedures that balance functional improvement with aesthetic enhancement.', ur: 'ماہرانہ cosmetic rhinoplasty اور ناک کی خوبصورتی جو فعالیت اور حسن دونوں کو بہتر بنائے۔' },
+    'svc-book-btn':    { en: 'Book Consultation →',     ur: 'مشاورت بُک کریں →' },
+    'why-promise-pill':{ en: 'Our Promise',             ur: 'ہمارا وعدہ' },
+    'why-promise-h2':  { en: 'Why Patients Choose <span>Wajid ENT Clinic</span>', ur: 'مریض <span>واجد ENT Clinic</span> کیوں چُنتے ہیں' },
+    'why1-title':      { en: 'Expert ENT Care',         ur: 'ماہر ENT علاج' },
+    'why1-text':       { en: 'MS (ENT) qualified surgeon with advanced training in endoscopic procedures and cosmetic surgery.', ur: 'MS (ENT) qualified سرجن، endoscopic اور cosmetic surgery میں اعلیٰ تربیت یافتہ۔' },
+    'why2-title':      { en: 'Experienced Team',        ur: 'تجربہ کار ٹیم' },
+    'why2-text':       { en: 'A dedicated and compassionate medical team committed to your health and recovery.', ur: 'آپ کی صحت اور شفایابی کے لیے وقف ایک مخلص طبی ٹیم۔' },
+    'why3-title':      { en: 'Patient Comfort',         ur: 'مریض کا آرام' },
+    'why3-text':       { en: 'A warm, patient-friendly environment designed to make your visit as comfortable as possible.', ur: 'گرمجوش اور مریض دوست ماحول جو آپ کا دورہ آرام دہ بنائے۔' },
+    'why4-title':      { en: 'Modern Facilities',       ur: 'جدید سہولیات' },
+    'why4-text':       { en: 'State-of-the-art endoscopic and audiological equipment for precise diagnosis and treatment.', ur: 'جدید endoscopic اور audiological آلات درست تشخیص اور علاج کے لیے۔' },
+    'cta-svc-h2':      { en: 'Need ENT Care?',          ur: 'ENT علاج کی ضرورت ہے؟' },
+    'cta-svc-p':       { en: 'Schedule your appointment with Dr. Rana Humayun Babar and get expert care today.', ur: 'آج ہی ڈاکٹر رانا ہمایوں بابر سے وقت لیں۔' },
+
+    // APPOINTMENT PAGE
+    'apt-pill':        { en: 'Appointments',            ur: 'وقت بُک کریں' },
+    'apt-h1':          { en: 'Book an Appointment',     ur: 'اپنا وقت بُک کریں' },
+    'apt-p':           { en: "Fill in your details and we'll confirm your appointment as soon as possible", ur: 'اپنی تفصیل بھریں اور ہم جلد از جلد وقت کی تصدیق کریں گے' },
+    'apt-info-title':  { en: 'Clinic Information',      ur: 'کلینک کی معلومات' },
+    'apt-addr-label':  { en: 'Address',                 ur: 'پتہ' },
+    'apt-addr-val':    { en: 'Jhang Road, opposite Al Shifa Orthopedic Hospital, Kabirwala', ur: 'Jhang Road، مقابل Al Shifa Orthopedic Hospital، Kabirwala' },
+    'apt-phone-label': { en: 'Phone / WhatsApp',        ur: 'فون / WhatsApp' },
+    'apt-hours-label': { en: 'Clinic Hours',            ur: 'اوقاتِ کار' },
+    'apt-hours-val':   { en: 'Mon–Sat: 10:00 AM – 9:00 PM', ur: 'پیر–ہفتہ: صبح 10 بجے – رات 9 بجے' },
+    'apt-before-title':{ en: 'Before Your Visit',       ur: 'آنے سے پہلے' },
+    'apt-before-1':    { en: '• Bring any previous medical reports', ur: '• پرانی طبی رپورٹیں ساتھ لائیں' },
+    'apt-before-2':    { en: '• List of current medications',        ur: '• موجودہ دوائیوں کی فہرست' },
+    'apt-before-3':    { en: '• Previous ENT assessments if any',    ur: '• پرانا ENT معائنہ اگر ہو' },
+    'apt-before-4':    { en: '• Arrive 10 minutes early',            ur: '• 10 منٹ پہلے پہنچیں' },
+    'apt-before-5':    { en: '• Bring a valid ID for registration',   ur: '• رجسٹریشن کے لیے شناختی کارڈ لائیں' },
+    'form-title':      { en: 'Request an Appointment',  ur: 'وقت کی درخواست' },
+    'form-sub':        { en: "Fill in your details below and our team will confirm your booking shortly.", ur: 'نیچے تفصیل بھریں اور ہماری ٹیم جلد بُکنگ کی تصدیق کرے گی۔' },
+    'lbl-name':        { en: 'Full Name',               ur: 'پورا نام' },
+    'lbl-phone':       { en: 'Phone Number',            ur: 'فون نمبر' },
+    'lbl-date':        { en: 'Preferred Date',          ur: 'پسندیدہ تاریخ' },
+    'lbl-time':        { en: 'Preferred Time',          ur: 'پسندیدہ وقت' },
+    'lbl-reason':      { en: 'Reason for Visit',        ur: 'آنے کی وجہ' },
+    'lbl-email':       { en: 'Email Address',           ur: 'ای میل پتہ' },
+    'lbl-email-note':  { en: '(Optional — doctor will reply by email if provided)', ur: '(اختیاری — ڈاکٹر ای میل سے جواب دیں گے)' },
+    'email-hint':      { en: 'If no email, doctor will contact you by phone to confirm the appointment.', ur: 'اگر ای میل نہیں، تو ڈاکٹر فون سے رابطہ کریں گے۔' },
+    'submit-btn':      { en: 'Request Appointment',     ur: 'وقت کی درخواست کریں' },
+    'time-slot-ph':    { en: 'Select a time slot',      ur: 'وقت منتخب کریں' },
+
+    // CONTACT PAGE
+    'contact-pill':    { en: 'Contact Us',              ur: 'رابطہ کریں' },
+    'contact-h1':      { en: 'Get In Touch',            ur: 'ہم سے ملیں' },
+    'contact-p':       { en: "We're here to help. Reach out anytime during clinic hours", ur: 'ہم مدد کے لیے حاضر ہیں۔ اوقاتِ کار میں کبھی بھی رابطہ کریں' },
+    'find-us':         { en: 'Find Us',                 ur: 'ہمیں ڈھونڈیں' },
+    'ct-addr-label':   { en: 'Address',                 ur: 'پتہ' },
+    'ct-addr-val1':    { en: 'Jhang Road, opposite Al Shifa',         ur: 'Jhang Road، مقابل Al Shifa' },
+    'ct-addr-val2':    { en: 'Orthopedic Hospital, Kabirwala',        ur: 'Orthopedic Hospital، Kabirwala' },
+    'ct-phone-label':  { en: 'Phone',                   ur: 'فون' },
+    'ct-wa-label':     { en: 'WhatsApp',                ur: 'WhatsApp' },
+    'ct-wa-link':      { en: 'Chat on WhatsApp →',      ur: 'WhatsApp پر بات کریں →' },
+    'clinic-hours-title':{ en: 'Clinic Hours',          ur: 'اوقاتِ کار' },
+    'day-mon':         { en: 'Monday',    ur: 'پیر' },
+    'day-tue':         { en: 'Tuesday',   ur: 'منگل' },
+    'day-wed':         { en: 'Wednesday', ur: 'بدھ' },
+    'day-thu':         { en: 'Thursday',  ur: 'جمعرات' },
+    'day-fri':         { en: 'Friday',    ur: 'جمعہ' },
+    'day-sat':         { en: 'Saturday',  ur: 'ہفتہ' },
+    'day-sun':         { en: 'Sunday',    ur: 'اتوار' },
+    'closed':          { en: 'Closed',    ur: 'بند' },
+    'contact-book-btn':{ en: 'Book Appointment', ur: 'وقت بُک کریں' },
+
+    // FOOTER
+    'footer-tagline':  { en: 'Expert ENT care by Dr. Rana Humayun Babar (MBBS, RMP, MS ENT). Providing advanced endoscopic sinus surgery and cosmetic nose care in Kabirwala.', ur: 'ڈاکٹر رانا ہمایوں بابر (MBBS, RMP, MS ENT) کے ذریعے ماہر ENT علاج۔ Kabirwala میں جدید endoscopic sinus surgery اور cosmetic nose کا علاج۔' },
+    'footer-addr':     { en: 'Jhang Road, opposite Al Shifa Orthopedic Hospital, Kabirwala', ur: 'Jhang Road، مقابل Al Shifa Orthopedic Hospital، Kabirwala' },
+    'footer-ql':       { en: 'Quick Links',       ur: 'اہم لنکس' },
+    'footer-ql-home':  { en: 'Home',              ur: 'ہوم' },
+    'footer-ql-about': { en: 'About Doctor',      ur: 'ڈاکٹر کے بارے میں' },
+    'footer-ql-svc':   { en: 'Services',          ur: 'خدمات' },
+    'footer-ql-book':  { en: 'Book Appointment',  ur: 'وقت بُک کریں' },
+    'footer-ql-ct':    { en: 'Contact Us',        ur: 'رابطہ کریں' },
+    'footer-cl':       { en: 'Clinic Hours',      ur: 'اوقاتِ کار' },
+    'footer-h1':       { en: 'Mon – Thu',         ur: 'پیر – جمعرات' },
+    'footer-h2-day':   { en: 'Friday',            ur: 'جمعہ' },
+    'footer-h3-day':   { en: 'Saturday',          ur: 'ہفتہ' },
+    'footer-h4-day':   { en: 'Sunday',            ur: 'اتوار' },
+    'footer-h4-val':   { en: 'Closed',            ur: 'بند' },
+    'footer-emg':      { en: 'Emergency?',        ur: 'ایمرجنسی؟' },
+    'footer-emg-call': { en: 'Call us at 0309-8742674', ur: 'کال کریں: 0309-8742674' },
+    'footer-copy':     { en: '© 2025 Wajid ENT Clinic. All rights reserved. Better ENT Care. Better Life.', ur: '© 2025 Wajid ENT Clinic۔ تمام حقوق محفوظ ہیں۔ بہترین ENT علاج، بہترین زندگی۔' },
+    'footer-open':     { en: 'Open Today Until 9:00 PM', ur: 'آج رات 9:00 بجے تک کھلا ہے' },
+
+    // PLACEHOLDERS
+    'ph-name':         { en: 'e.g. Ahmed Ali',          ur: 'مثلاً: احمد علی' },
+    'ph-phone':        { en: 'e.g. 0309-8742674',       ur: 'مثلاً: 0309-8742674' },
+    'ph-reason':       { en: 'Briefly describe your symptoms or reason for the visit...', ur: 'اپنی تکلیف یا آنے کی وجہ مختصراً لکھیں...' },
+    'ph-email':        { en: 'your@email.com',           ur: 'your@email.com' },
+  };
+
+  // Apply translation to all data-i18n elements
+  function applyLang(lang) {
+    // Toggle body class for CSS-based RTL text direction fix (fixes bidi rendering)
+    if (lang === 'ur') {
+      document.body.classList.add('lang-ur');
+    } else {
+      document.body.classList.remove('lang-ur');
+    }
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (T[key] && T[key][lang] !== undefined) {
+        el.innerHTML = T[key][lang];
+      }
+    });
+    // Placeholders
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-ph');
+      if (T[key] && T[key][lang] !== undefined) {
+        el.placeholder = T[key][lang];
+      }
+    });
+  }
+
+  window.toggleLanguage = function() {
+    currentLang = currentLang === 'en' ? 'ur' : 'en';
+    applyLang(currentLang);
+  };
+
+  // Run on load (English by default — just ensures everything is synced)
+  document.addEventListener('DOMContentLoaded', function() {
+    applyLang('en');
+  });
+})();
+</script>
 </body>
 </html>
+
